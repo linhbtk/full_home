@@ -1,0 +1,18 @@
+Tue, 24 Sep 2013 09:39:09 +0000 [CARAVANOFLIFE 2108][Tera-WURFL] WARNING: Loading patch: custom_web_patch.xml
+Tue, 24 Sep 2013 09:39:31 +0000 [CARAVANOFLIFE 2108][Tera-WURFL] WARNING: Finished loading WURFL 2.3.4, db.scientiamobile.com - 2013-06-02 18:44:18 (Sun Jun 02 18:46:46 -0400 2013) in 29.77 seconds
+Tue, 24 Sep 2013 10:02:42 +0000 [CARAVANOFLIFE 2108][Tera-WURFL] WARNING: Loading patch: custom_web_patch.xml
+Tue, 24 Sep 2013 10:03:03 +0000 [CARAVANOFLIFE 2108][Tera-WURFL] WARNING: Loading patch: custom_web_patch.xml
+Tue, 24 Sep 2013 10:03:08 +0000 [CARAVANOFLIFE 2108][Tera-WURFL] WARNING: Finished loading WURFL 2.3.4, db.scientiamobile.com - 2013-06-02 18:44:18 (Sun Jun 02 18:46:46 -0400 2013) in 32.96 seconds
+Tue, 24 Sep 2013 10:03:24 +0000 [CARAVANOFLIFE 2108][Tera-WURFL] WARNING: Loading patch: custom_web_patch.xml
+Tue, 24 Sep 2013 10:03:31 +0000 [CARAVANOFLIFE 2108][rebuildCacheTable] WARNING: Rebuilt cache table, existing table was empty - this is very unusual.
+Tue, 24 Sep 2013 10:03:31 +0000 [CARAVANOFLIFE 2108][Tera-WURFL] WARNING: Finished loading WURFL 2.3.4, db.scientiamobile.com - 2013-06-02 18:44:18 (Sun Jun 02 18:46:46 -0400 2013) in 36.31 seconds
+Tue, 24 Sep 2013 10:03:50 +0000 [CARAVANOFLIFE 2108][rebuildCacheTable] WARNING: Rebuilt cache table, existing table was empty - this is very unusual.
+Tue, 24 Sep 2013 10:03:50 +0000 [CARAVANOFLIFE 2108][Tera-WURFL] WARNING: Finished loading WURFL 2.3.4, db.scientiamobile.com - 2013-06-02 18:44:18 (Sun Jun 02 18:46:46 -0400 2013) in 34.12 seconds
+Mon, 04 Apr 2016 14:19:18 +0700 [MANHTV 2688][TeraWurflDatabase_MySQL5::getDeviceFallBackTree] ERROR: Tera-WURFL Error: database fallback procedure returned no records, verify that tw_FallBackDevices exists.
+Mon, 04 Apr 2016 14:19:18 +0700 [MANHTV 2688][TeraWurflDatabase_MySQL5::getDeviceFallBackTree] ERROR: Tera-WURFL Error: database fallback procedure returned no records, verify that tw_FallBackDevices exists.
+Mon, 04 Apr 2016 14:19:19 +0700 [MANHTV 2688][TeraWurflDatabase_MySQL5::getDeviceFallBackTree] ERROR: Tera-WURFL Error: database fallback procedure returned no records, verify that tw_FallBackDevices exists.
+Mon, 04 Apr 2016 14:19:19 +0700 [MANHTV 2688][TeraWurflDatabase_MySQL5::getDeviceFallBackTree] ERROR: Tera-WURFL Error: database fallback procedure returned no records, verify that tw_FallBackDevices exists.
+Mon, 04 Apr 2016 14:19:23 +0700 [MANHTV 2688][TeraWurflDatabase_MySQL5::getDeviceFallBackTree] ERROR: Tera-WURFL Error: database fallback procedure returned no records, verify that tw_FallBackDevices exists.
+Mon, 04 Apr 2016 14:19:23 +0700 [MANHTV 2688][TeraWurflDatabase_MySQL5::getDeviceFallBackTree] ERROR: Tera-WURFL Error: database fallback procedure returned no records, verify that tw_FallBackDevices exists.
+Mon, 04 Apr 2016 14:19:36 +0700 [MANHTV 2688][TeraWurflDatabase_MySQL5::getDeviceFallBackTree] ERROR: Tera-WURFL Error: database fallback procedure returned no records, verify that tw_FallBackDevices exists.
+Mon, 04 Apr 2016 14:19:36 +0700 [MANHTV 2688][TeraWurflDatabase_MySQL5::getDeviceFallBackTree] ERROR: Tera-WURFL Error: database fallback procedure returned no records, verify that tw_FallBackDevices exists.

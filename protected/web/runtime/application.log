@@ -1,0 +1,303 @@
+2017/04/09 20:11:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Không thể giải quyết yêu cầu "themes/default/images/slider_2.jpg".' in D:\xampp\htdocs\framework\yii_1_16\yiilite.php:1765
+Stack trace:
+#0 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1681): CWebApplication->runController('themes/default/...')
+#1 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1202): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\full_home\index.php(23): CApplication->run()
+#3 {main}
+REQUEST_URI=/full_home/themes/default/images/slider_2.jpg
+HTTP_REFERER=http://localhost/full_home/
+---
+2017/04/09 20:11:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Không thể giải quyết yêu cầu "themes/default/images/slider_3.jpg".' in D:\xampp\htdocs\framework\yii_1_16\yiilite.php:1765
+Stack trace:
+#0 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1681): CWebApplication->runController('themes/default/...')
+#1 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1202): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\full_home\index.php(23): CApplication->run()
+#3 {main}
+REQUEST_URI=/full_home/themes/default/images/slider_3.jpg
+HTTP_REFERER=http://localhost/full_home/
+---
+2017/04/09 20:11:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Không thể giải quyết yêu cầu "themes/default/images/slider_2.jpg".' in D:\xampp\htdocs\framework\yii_1_16\yiilite.php:1765
+Stack trace:
+#0 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1681): CWebApplication->runController('themes/default/...')
+#1 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1202): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\full_home\index.php(23): CApplication->run()
+#3 {main}
+REQUEST_URI=/full_home/themes/default/images/slider_2.jpg
+HTTP_REFERER=http://localhost/full_home/
+---
+2017/04/09 20:11:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Không thể giải quyết yêu cầu "themes/default/images/slider_3.jpg".' in D:\xampp\htdocs\framework\yii_1_16\yiilite.php:1765
+Stack trace:
+#0 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1681): CWebApplication->runController('themes/default/...')
+#1 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1202): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\full_home\index.php(23): CApplication->run()
+#3 {main}
+REQUEST_URI=/full_home/themes/default/images/slider_3.jpg
+HTTP_REFERER=http://localhost/full_home/
+---
+2017/04/09 20:12:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Không thể giải quyết yêu cầu "themes/default/images/slider_2.jpg".' in D:\xampp\htdocs\framework\yii_1_16\yiilite.php:1765
+Stack trace:
+#0 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1681): CWebApplication->runController('themes/default/...')
+#1 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1202): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\full_home\index.php(23): CApplication->run()
+#3 {main}
+REQUEST_URI=/full_home/themes/default/images/slider_2.jpg
+HTTP_REFERER=http://localhost/full_home/
+---
+2017/04/09 20:12:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Không thể giải quyết yêu cầu "themes/default/images/slider_3.jpg".' in D:\xampp\htdocs\framework\yii_1_16\yiilite.php:1765
+Stack trace:
+#0 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1681): CWebApplication->runController('themes/default/...')
+#1 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1202): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\full_home\index.php(23): CApplication->run()
+#3 {main}
+REQUEST_URI=/full_home/themes/default/images/slider_3.jpg
+HTTP_REFERER=http://localhost/full_home/
+---
+2017/04/09 20:12:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Không thể giải quyết yêu cầu "themes/default/images/slider_2.jpg".' in D:\xampp\htdocs\framework\yii_1_16\yiilite.php:1765
+Stack trace:
+#0 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1681): CWebApplication->runController('themes/default/...')
+#1 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1202): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\full_home\index.php(23): CApplication->run()
+#3 {main}
+REQUEST_URI=/full_home/themes/default/images/slider_2.jpg
+HTTP_REFERER=http://localhost/full_home/
+---
+2017/04/09 20:12:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Không thể giải quyết yêu cầu "themes/default/images/slider_2.jpg".' in D:\xampp\htdocs\framework\yii_1_16\yiilite.php:1765
+Stack trace:
+#0 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1681): CWebApplication->runController('themes/default/...')
+#1 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1202): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\full_home\index.php(23): CApplication->run()
+#3 {main}
+REQUEST_URI=/full_home/themes/default/images/slider_2.jpg
+HTTP_REFERER=http://localhost/full_home/
+---
+2017/04/09 20:12:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Không thể giải quyết yêu cầu "themes/default/images/slider_3.jpg".' in D:\xampp\htdocs\framework\yii_1_16\yiilite.php:1765
+Stack trace:
+#0 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1681): CWebApplication->runController('themes/default/...')
+#1 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1202): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\full_home\index.php(23): CApplication->run()
+#3 {main}
+REQUEST_URI=/full_home/themes/default/images/slider_3.jpg
+HTTP_REFERER=http://localhost/full_home/
+---
+2017/04/09 21:28:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Không thể giải quyết yêu cầu "themes/default/images/line.jpg".' in D:\xampp\htdocs\framework\yii_1_16\yiilite.php:1765
+Stack trace:
+#0 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1681): CWebApplication->runController('themes/default/...')
+#1 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1202): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\full_home\index.php(23): CApplication->run()
+#3 {main}
+REQUEST_URI=/full_home/themes/default/images/line.jpg
+HTTP_REFERER=http://localhost/full_home/
+---
+2017/04/11 22:10:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Không thể giải quyết yêu cầu "themes/default/js/jquery.flexslider-min.js".' in D:\xampp\htdocs\framework\yii_1_16\yiilite.php:1765
+Stack trace:
+#0 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1681): CWebApplication->runController('themes/default/...')
+#1 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1202): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\full_home\index.php(23): CApplication->run()
+#3 {main}
+REQUEST_URI=/full_home/themes/default/js/jquery.flexslider-min.js
+HTTP_REFERER=http://localhost/full_home/site/productDetail
+---
+2017/04/11 22:20:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Không thể giải quyết yêu cầu "themes/default/css/font/helveticaneuebold.ttf".' in D:\xampp\htdocs\framework\yii_1_16\yiilite.php:1765
+Stack trace:
+#0 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1681): CWebApplication->runController('themes/default/...')
+#1 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1202): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\full_home\index.php(23): CApplication->run()
+#3 {main}
+REQUEST_URI=/full_home/themes/default/css/font/helveticaneuebold.ttf
+HTTP_REFERER=http://localhost/full_home/themes/default/css/style.css
+---
+2017/04/11 22:20:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Không thể giải quyết yêu cầu "themes/default/css/font/helveticaneuelight.ttf".' in D:\xampp\htdocs\framework\yii_1_16\yiilite.php:1765
+Stack trace:
+#0 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1681): CWebApplication->runController('themes/default/...')
+#1 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1202): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\full_home\index.php(23): CApplication->run()
+#3 {main}
+REQUEST_URI=/full_home/themes/default/css/font/helveticaneuelight.ttf
+HTTP_REFERER=http://localhost/full_home/themes/default/css/style.css
+---
+2017/04/11 22:34:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Hệ thống không thể tìm được hành động yêu cầu "코멕스몰_files".' in D:\xampp\htdocs\framework\yii_1_16\yiilite.php:3750
+Stack trace:
+#0 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(3632): CController->missingAction('\xEC\xBD\x94\xEB\xA9\x95\xEC\x8A\xA4\xEB\xAA\xB0_fi...')
+#1 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1761): CController->run('\xEC\xBD\x94\xEB\xA9\x95\xEC\x8A\xA4\xEB\xAA\xB0_fi...')
+#2 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1681): CWebApplication->runController('site/\xEC\xBD\x94\xEB\xA9\x95\xEC\x8A\xA4\xEB...')
+#3 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1202): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\full_home\index.php(23): CApplication->run()
+#5 {main}
+REQUEST_URI=/full_home/site/%EC%BD%94%EB%A9%95%EC%8A%A4%EB%AA%B0_files/banner(170315).jpg
+HTTP_REFERER=http://localhost/full_home/site/productDetail
+---
+2017/04/11 22:35:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Hệ thống không thể tìm được hành động yêu cầu "코멕스몰_files".' in D:\xampp\htdocs\framework\yii_1_16\yiilite.php:3750
+Stack trace:
+#0 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(3632): CController->missingAction('\xEC\xBD\x94\xEB\xA9\x95\xEC\x8A\xA4\xEB\xAA\xB0_fi...')
+#1 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1761): CController->run('\xEC\xBD\x94\xEB\xA9\x95\xEC\x8A\xA4\xEB\xAA\xB0_fi...')
+#2 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1681): CWebApplication->runController('site/\xEC\xBD\x94\xEB\xA9\x95\xEC\x8A\xA4\xEB...')
+#3 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1202): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\full_home\index.php(23): CApplication->run()
+#5 {main}
+REQUEST_URI=/full_home/site/%EC%BD%94%EB%A9%95%EC%8A%A4%EB%AA%B0_files/banner(170315).jpg
+HTTP_REFERER=http://localhost/full_home/site/productDetail
+---
+2017/04/11 22:35:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Không thể giải quyết yêu cầu "themes/default/images/count_up.gif".' in D:\xampp\htdocs\framework\yii_1_16\yiilite.php:1765
+Stack trace:
+#0 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1681): CWebApplication->runController('themes/default/...')
+#1 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1202): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\full_home\index.php(23): CApplication->run()
+#3 {main}
+REQUEST_URI=/full_home/themes/default/images/count_up.gif
+HTTP_REFERER=http://localhost/full_home/themes/default/css/content.css
+---
+2017/04/11 22:35:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Không thể giải quyết yêu cầu "themes/default/images/count_down.gif".' in D:\xampp\htdocs\framework\yii_1_16\yiilite.php:1765
+Stack trace:
+#0 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1681): CWebApplication->runController('themes/default/...')
+#1 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1202): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\full_home\index.php(23): CApplication->run()
+#3 {main}
+REQUEST_URI=/full_home/themes/default/images/count_down.gif
+HTTP_REFERER=http://localhost/full_home/themes/default/css/content.css
+---
+2017/04/11 22:35:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Hệ thống không thể tìm được hành động yêu cầu "코멕스몰_files".' in D:\xampp\htdocs\framework\yii_1_16\yiilite.php:3750
+Stack trace:
+#0 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(3632): CController->missingAction('\xEC\xBD\x94\xEB\xA9\x95\xEC\x8A\xA4\xEB\xAA\xB0_fi...')
+#1 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1761): CController->run('\xEC\xBD\x94\xEB\xA9\x95\xEC\x8A\xA4\xEB\xAA\xB0_fi...')
+#2 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1681): CWebApplication->runController('site/\xEC\xBD\x94\xEB\xA9\x95\xEC\x8A\xA4\xEB...')
+#3 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1202): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\full_home\index.php(23): CApplication->run()
+#5 {main}
+REQUEST_URI=/full_home/site/%EC%BD%94%EB%A9%95%EC%8A%A4%EB%AA%B0_files/banner(170315).jpg
+HTTP_REFERER=http://localhost/full_home/site/productDetail
+---
+2017/04/11 22:35:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Không thể giải quyết yêu cầu "themes/default/images/count_up.gif".' in D:\xampp\htdocs\framework\yii_1_16\yiilite.php:1765
+Stack trace:
+#0 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1681): CWebApplication->runController('themes/default/...')
+#1 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1202): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\full_home\index.php(23): CApplication->run()
+#3 {main}
+REQUEST_URI=/full_home/themes/default/images/count_up.gif
+HTTP_REFERER=http://localhost/full_home/themes/default/css/content.css
+---
+2017/04/11 22:35:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Không thể giải quyết yêu cầu "themes/default/images/count_down.gif".' in D:\xampp\htdocs\framework\yii_1_16\yiilite.php:1765
+Stack trace:
+#0 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1681): CWebApplication->runController('themes/default/...')
+#1 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1202): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\full_home\index.php(23): CApplication->run()
+#3 {main}
+REQUEST_URI=/full_home/themes/default/images/count_down.gif
+HTTP_REFERER=http://localhost/full_home/themes/default/css/content.css
+---
+2017/04/11 22:37:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Hệ thống không thể tìm được hành động yêu cầu "코멕스몰_files".' in D:\xampp\htdocs\framework\yii_1_16\yiilite.php:3750
+Stack trace:
+#0 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(3632): CController->missingAction('\xEC\xBD\x94\xEB\xA9\x95\xEC\x8A\xA4\xEB\xAA\xB0_fi...')
+#1 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1761): CController->run('\xEC\xBD\x94\xEB\xA9\x95\xEC\x8A\xA4\xEB\xAA\xB0_fi...')
+#2 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1681): CWebApplication->runController('site/\xEC\xBD\x94\xEB\xA9\x95\xEC\x8A\xA4\xEB...')
+#3 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1202): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\full_home\index.php(23): CApplication->run()
+#5 {main}
+REQUEST_URI=/full_home/site/%EC%BD%94%EB%A9%95%EC%8A%A4%EB%AA%B0_files/banner(170315).jpg
+HTTP_REFERER=http://localhost/full_home/site/productDetail
+---
+2017/04/11 22:37:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Không thể giải quyết yêu cầu "themes/default/images/count_up.gif".' in D:\xampp\htdocs\framework\yii_1_16\yiilite.php:1765
+Stack trace:
+#0 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1681): CWebApplication->runController('themes/default/...')
+#1 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1202): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\full_home\index.php(23): CApplication->run()
+#3 {main}
+REQUEST_URI=/full_home/themes/default/images/count_up.gif
+HTTP_REFERER=http://localhost/full_home/themes/default/css/content.css
+---
+2017/04/11 22:37:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Không thể giải quyết yêu cầu "themes/default/images/count_down.gif".' in D:\xampp\htdocs\framework\yii_1_16\yiilite.php:1765
+Stack trace:
+#0 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1681): CWebApplication->runController('themes/default/...')
+#1 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1202): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\full_home\index.php(23): CApplication->run()
+#3 {main}
+REQUEST_URI=/full_home/themes/default/images/count_down.gif
+HTTP_REFERER=http://localhost/full_home/themes/default/css/content.css
+---
+2017/04/11 22:53:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Hệ thống không thể tìm được hành động yêu cầu "코멕스몰_files".' in D:\xampp\htdocs\framework\yii_1_16\yiilite.php:3750
+Stack trace:
+#0 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(3632): CController->missingAction('\xEC\xBD\x94\xEB\xA9\x95\xEC\x8A\xA4\xEB\xAA\xB0_fi...')
+#1 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1761): CController->run('\xEC\xBD\x94\xEB\xA9\x95\xEC\x8A\xA4\xEB\xAA\xB0_fi...')
+#2 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1681): CWebApplication->runController('site/\xEC\xBD\x94\xEB\xA9\x95\xEC\x8A\xA4\xEB...')
+#3 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1202): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\full_home\index.php(23): CApplication->run()
+#5 {main}
+REQUEST_URI=/full_home/site/%EC%BD%94%EB%A9%95%EC%8A%A4%EB%AA%B0_files/banner(170315).jpg
+HTTP_REFERER=http://localhost/full_home/site/productDetail
+---
+2017/04/11 22:53:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Không thể giải quyết yêu cầu "themes/default/images/count_up.gif".' in D:\xampp\htdocs\framework\yii_1_16\yiilite.php:1765
+Stack trace:
+#0 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1681): CWebApplication->runController('themes/default/...')
+#1 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1202): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\full_home\index.php(23): CApplication->run()
+#3 {main}
+REQUEST_URI=/full_home/themes/default/images/count_up.gif
+HTTP_REFERER=http://localhost/full_home/themes/default/css/content.css
+---
+2017/04/11 22:53:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Không thể giải quyết yêu cầu "themes/default/images/count_down.gif".' in D:\xampp\htdocs\framework\yii_1_16\yiilite.php:1765
+Stack trace:
+#0 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1681): CWebApplication->runController('themes/default/...')
+#1 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1202): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\full_home\index.php(23): CApplication->run()
+#3 {main}
+REQUEST_URI=/full_home/themes/default/images/count_down.gif
+HTTP_REFERER=http://localhost/full_home/themes/default/css/content.css
+---
+2017/04/11 23:55:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Hệ thống không thể tìm được hành động yêu cầu "<".' in D:\xampp\htdocs\framework\yii_1_16\yiilite.php:3750
+Stack trace:
+#0 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(3632): CController->missingAction('<')
+#1 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1761): CController->run('<')
+#2 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1681): CWebApplication->runController('site/<')
+#3 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1202): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\full_home\index.php(23): CApplication->run()
+#5 {main}
+REQUEST_URI=/full_home/site/%3C?=%20Yii::app()-%3Etheme-%3EbaseUrl%20?%3E/images/ic_menu_1_1.png
+HTTP_REFERER=http://localhost/full_home/site/productDetail
+---
+2017/04/12 23:30:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Không thể giải quyết yêu cầu "themes/default/images/product_2.jpg".' in D:\xampp\htdocs\framework\yii_1_16\yiilite.php:1765
+Stack trace:
+#0 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1681): CWebApplication->runController('themes/default/...')
+#1 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1202): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\full_home\index.php(23): CApplication->run()
+#3 {main}
+REQUEST_URI=/full_home/themes/default/images/product_2.jpg
+HTTP_REFERER=http://localhost/full_home/site/productDetail
+---
+2017/04/14 11:23:15 [error] [exception.CException] exception 'CException' with message 'Thuộc tính "SiteController.isMobile" chưa được định nghĩa.' in D:\xampp\htdocs\framework\yii_1_16\yiilite.php:617
+Stack trace:
+#0 D:\xampp\htdocs\full_home\themes\default\views\site\index.php(2): CComponent->__get('isMobile')
+#1 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(3493): require('D:\\xampp\\htdocs...')
+#2 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(3472): CBaseController->renderInternal('D:\\xampp\\htdocs...', NULL, true)
+#3 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(3904): CBaseController->renderFile('D:\\xampp\\htdocs...', NULL, true)
+#4 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(3872): CController->renderPartial('index', NULL, true)
+#5 D:\xampp\htdocs\full_home\protected\web\controllers\SiteController.php(27): CController->render('index')
+#6 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(4139): SiteController->actionIndex()
+#7 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(3652): CInlineAction->runWithParams(Array)
+#8 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(3637): CController->runAction(Object(CInlineAction))
+#9 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(3627): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1761): CController->run('index')
+#11 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1681): CWebApplication->runController('site/index')
+#12 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1202): CWebApplication->processRequest()
+#13 D:\xampp\htdocs\full_home\index.php(23): CApplication->run()
+#14 {main}
+REQUEST_URI=/full_home/
+HTTP_REFERER=http://localhost/full_home/site/categories
+---
+2017/04/14 11:24:01 [error] [exception.CException] exception 'CException' with message 'SiteController không tìm được view: "//layouts/mobile/_main_header".' in D:\xampp\htdocs\framework\yii_1_16\yiilite.php:3913
+Stack trace:
+#0 D:\xampp\htdocs\full_home\themes\default\views\layouts\main_mobile.php(49): CController->renderPartial('//layouts/mobil...')
+#1 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(3493): require('D:\\xampp\\htdocs...')
+#2 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(3472): CBaseController->renderInternal('D:\\xampp\\htdocs...', Array, true)
+#3 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(3874): CBaseController->renderFile('D:\\xampp\\htdocs...', Array, true)
+#4 D:\xampp\htdocs\full_home\protected\web\controllers\SiteController.php(27): CController->render('index')
+#5 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(4139): SiteController->actionIndex()
+#6 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(3652): CInlineAction->runWithParams(Array)
+#7 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(3637): CController->runAction(Object(CInlineAction))
+#8 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(3627): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1761): CController->run('index')
+#10 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1681): CWebApplication->runController('site/index')
+#11 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1202): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\full_home\index.php(23): CApplication->run()
+#13 {main}
+REQUEST_URI=/full_home/
+HTTP_REFERER=http://localhost/full_home/site/categories
+---

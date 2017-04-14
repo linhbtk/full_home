@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/protected/messages/vi/web/full_home.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/protected/web/controllers/SiteController.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/themes/default/css/style.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/themes/default/js/main.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/themes/default/views/layouts/_banner.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/themes/default/views/layouts/_menu.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/themes/default/views/layouts/_menu_left.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/themes/default/views/layouts/_slider.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/themes/default/views/layouts/_slider_mobile.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/themes/default/views/layouts/_social.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/themes/default/views/layouts/content_1.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/themes/default/views/layouts/content_2.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/themes/default/views/layouts/footer.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/themes/default/views/layouts/header.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/themes/default/views/layouts/header_mobile.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/themes/default/views/layouts/main.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/themes/default/views/site/categories.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/themes/default/views/site/index.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/themes/default/views/site/product_detail.php" charset="UTF-8" />
+  </component>
+</project>
