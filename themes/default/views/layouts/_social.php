@@ -1,4 +1,4 @@
-<div class="social">
+<div class="social hidden-xs">
     <div id="box_hot_line">
         <div class="txt_hotline"><?= Yii::t('web/full_home', 'txt_hotline'); ?></div>
         <div class="hotline"><?= Yii::t('web/full_home', 'hotline'); ?></div>

@@ -16,8 +16,8 @@
                        class="parent <?= ($controller == 'site' && $action == 'about') ? 'active' : ''; ?>"><?= Yii::t('web/full_home', 'about'); ?></a>
                 </li>
                 <li class="">
-                    <a href="<?= Yii::app()->controller->createUrl('site/categories'); ?>" title=""
-                       class="parent <?= ($controller == 'site' && ($action == 'categories' || $action == 'productDetail')) ? 'active' : ''; ?>"><?= Yii::t('web/full_home', 'product'); ?></a>
+                    <a href="<?= Yii::app()->controller->createUrl('products/index'); ?>" title=""
+                       class="parent <?= ($controller == 'products' && ($action == 'index' || $action == 'detail')) ? 'active' : ''; ?>"><?= Yii::t('web/full_home', 'product'); ?></a>
                     <ul>
                         <li class="sub_menu">
                             <div class='col-md-3'>

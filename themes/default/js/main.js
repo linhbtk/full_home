@@ -13,7 +13,7 @@ jQuery(document).ready(function (jQuery) {
         slideshow: false
     });
 
-    /*menu left*/
+    /*web menu left*/
     //var active = true;
     //$('#collapse-init').click(function () {
     //    if (active) {
@@ -31,5 +31,5 @@ jQuery(document).ready(function (jQuery) {
     //$('#accordion').on('show.bs.collapse', function () {
     //    if (active) $('#accordion .in').collapse('hide');
     //});
-    /*menu left*/
+    /*web menu left*/
 });

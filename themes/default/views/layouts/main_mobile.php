@@ -4,13 +4,15 @@
     $cs->registerCssFile($theme_url . '/css/owl.carousel.min.css');
     $cs->registerCssFile($theme_url . '/css/owl.theme.default.min.css');
     $cs->registerCssFile($theme_url . '/css/flexslider.css');
-    $cs->registerCssFile($theme_url . '/css/style.css');
+    $cs->registerCssFile($theme_url . '/css/jquery.mmenu.all.css');
     $cs->registerCssFile($theme_url . '/css/content.css');
+    $cs->registerCssFile($theme_url . '/css/style.css');
 
     $cs->registerCoreScript('jquery', CClientScript::POS_HEAD);
     $cs->registerScriptFile($theme_url . '/js/owl.carousel.min.js', CClientScript::POS_HEAD);
     $cs->registerScriptFile($theme_url . '/js/jquery.flexslider-min.js', CClientScript::POS_HEAD);
     $cs->registerScriptFile($theme_url . '/js/main.js', CClientScript::POS_HEAD);
+    $cs->registerScriptFile($theme_url . '/js/jquery.mmenu.all.min.js', CClientScript::POS_END);
 ?>
 <!DOCTYPE html>
 <html>

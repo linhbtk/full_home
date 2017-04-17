@@ -301,3 +301,19 @@ Stack trace:
 REQUEST_URI=/full_home/
 HTTP_REFERER=http://localhost/full_home/site/categories
 ---
+2017/04/16 15:20:21 [error] [exception.CException] exception 'CException' with message 'ProductsController không tìm được view: "index".' in D:\xampp\htdocs\framework\yii_1_16\yiilite.php:3913
+Stack trace:
+#0 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(3872): CController->renderPartial('index', NULL, true)
+#1 D:\xampp\htdocs\full_home\protected\web\controllers\ProductsController.php(27): CController->render('index')
+#2 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(4139): ProductsController->actionIndex()
+#3 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(3652): CInlineAction->runWithParams(Array)
+#4 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(3637): CController->runAction(Object(CInlineAction))
+#5 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(3627): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1761): CController->run('index')
+#7 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1681): CWebApplication->runController('products/index')
+#8 D:\xampp\htdocs\framework\yii_1_16\yiilite.php(1202): CWebApplication->processRequest()
+#9 D:\xampp\htdocs\full_home\index.php(23): CApplication->run()
+#10 {main}
+REQUEST_URI=/full_home/products/index
+HTTP_REFERER=http://localhost/full_home/
+---
