@@ -1,5 +1,4 @@
 <?php
-
     $adm  = dirname(dirname(__FILE__));
     $base = dirname($adm);
     Yii::setPathOfAlias('adm', $adm);
