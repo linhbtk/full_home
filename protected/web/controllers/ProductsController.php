@@ -18,17 +18,31 @@
         }
 
         /**
-         * Default action
+         * @param $id
+         *
+         * @throws CHttpException
          */
-        public function actionIndex()
+        public function actionIndex($id)
         {
-            $this->pageTitle = Yii::t('web/full_home', 'product');
-
-            $this->render('index');
-
+            $categories = WCategories::getCategoryDetail($id);
+            if ($categories) {
+                $parent_cate     = WCategories::getCategoryDetail($categories->parent_id);
+                $this->pageTitle = Yii::t('web/full_home', 'product') . '-' . $categories->name;
+                $products        = WProducts::getProductsInCategory($categories->id);
+                $this->render('index', array(
+                    'categories'  => $categories,
+                    'parent_cate' => $parent_cate,
+                    'products'    => $products,
+                ));
+            } else {
+                throw new CHttpException(404, 'The requested page does not exist.');
+            }
         } //end index
 
-        public function actionDetail()
+        /**
+         * @param $id
+         */
+        public function actionDetail($id)
         {
             $this->pageTitle = Yii::t('web/full_home', 'product');
 

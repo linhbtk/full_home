@@ -10,7 +10,7 @@
 <div class="form">
     <?php $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
         'id'                   => 'abook-files-form',
-        'action'               => Yii::app()->controler->createUrl('/aFiles/images', array('media_id' => $model->id)),
+        'action'               => Yii::app()->controller->createUrl('/aFiles/images', array('media_id' => $model->id)),
         // Please note: When you enable ajax validation, make sure the corresponding
         // controller action is handling ajax validation correctly.
         // There is a call to performAjaxValidation() commented in generated controller code.

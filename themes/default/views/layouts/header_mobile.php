@@ -20,97 +20,51 @@
                 <span class="title_menu"><?= Yii::t('web/full_home', 'product_category') ?></span>
             </a>
         </li>
-        <li class="">
+        <?php
+            $sub_menu_2 = WCategories::getParentCategories();
+            if ($sub_menu_2):
+                $index = 1;
+                foreach ($sub_menu_2 as $level_2):
+                    ?>
+                    <li class="">
             <span class="level-1">
                 <div class="space_5"></div>
-                <span>Đồ gia dụng</span>
-                <img src="<?= Yii::app()->theme->baseUrl ?>/images/ic_menu_1_1.png" alt="" class="icon">
+                <span><?= CHtml::encode($level_2->name); ?></span>
+                <img src="<?= Yii::app()->theme->baseUrl ?>/images/ic_menu_1_<?= $index; ?>.png" alt="" class="icon">
                 <div class="space_5"></div>
             </span>
-            <ul>
-                <li>
-                    <span class="level-2">Bình nước</span>
-                    <ul>
-                        <li>
-                            <a href="<?= Yii::app()->controller->createUrl('products/index'); ?>" title="" class="level-3">Bình nước nhựa</a>
-                        </li>
-                        <li>
-                            <a href="<?= Yii::app()->controller->createUrl('products/index'); ?>" title="" class="level-3">Bình nước thủy tinh</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <span class="level-2">Hộp đựng thực phẩm</span>
-                    <ul>
-                        <li>
-                            <a href="<?= Yii::app()->controller->createUrl('products/index'); ?>" title="" class="level-3">Hộp nhựa</a>
-                        </li>
-                        <li>
-                            <a href="<?= Yii::app()->controller->createUrl('products/index'); ?>" title="" class="level-3">Hộp thủy tinh</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="<?= Yii::app()->controller->createUrl('products/index'); ?>" title="" class="level-2">Thớt</a>
-                </li>
-                <li>
-                    <a href="<?= Yii::app()->controller->createUrl('products/index'); ?>" title="" class="level-2">Găng Tay</a>
-                </li>
-                <li>
-                    <a href="<?= Yii::app()->controller->createUrl('products/index'); ?>" title="" class="level-2">Dụng cụ vệ sinh</a>
-                </li>
-                <li>
-                    <a href="<?= Yii::app()->controller->createUrl('products/index'); ?>" title="" class="level-2">Đồ dùng nhà tắm</a>
-                </li>
-                <li>
-                    <a href="<?= Yii::app()->controller->createUrl('products/index'); ?>" title="" class="level-2">Túi giặt</a>
-                </li>
-                <li>
-                    <a href="<?= Yii::app()->controller->createUrl('products/index'); ?>" title="" class="level-2">Khác</a>
-                </li>
-            </ul>
-        </li>
-        <li class="">
-            <span class="level-1">
-                <div class="space_10"></div>
-                <span>Hóa phẩm</span>
-                <img src="<?= Yii::app()->theme->baseUrl ?>/images/ic_menu_1_2.png" alt="" class="icon">
-            </span>
-            <ul>
-                <li>
-                    <a href="<?= Yii::app()->controller->createUrl('products/index'); ?>" title="" class="level-2">Mỹ phẩm dưỡng da</a>
-                </li>
-                <li>
-                    <a href="<?= Yii::app()->controller->createUrl('products/index'); ?>" title="" class="level-2">Chăm sóc tóc</a>
-                </li>
-                <li>
-                    <a href="<?= Yii::app()->controller->createUrl('products/index'); ?>" title="" class="level-2">Mỹ phẩm trang điểm</a>
-                </li>
-            </ul>
-        </li>
-        <li class="">
-            <span class="level-1">
-                <div class="space_10"></div>
-                <span>May mặc</span>
-                <img src="<?= Yii::app()->theme->baseUrl ?>/images/ic_menu_1_3.png" alt=""
-                     class="icon">
-            </span>
-            <ul>
-                <li>
-                    <a href="" title="" class="level-2">Tất nam</a>
-                </li>
-                <li>
-                    <a href="" title="" class="level-2">Tất nữ</a>
-                </li>
-            </ul>
-        </li>
-        <li class="">
-            <a href="" class="level-1">
-                <div class="space_10"></div>
-                <span>Quà tặng</span>
-                <img src="<?= Yii::app()->theme->baseUrl ?>/images/ic_menu_1_4.png" alt="" class="icon">
-            </a>
-        </li>
+                        <ul>
+                            <?php
+                                $sub_menu_3 = WCategories::getCategoriesByParentId($level_2->id);
+                                if ($sub_menu_3):
+                                    foreach ($sub_menu_3 as $level_3):
+                                        $sub_menu_4 = WCategories::getCategoriesByParentId($level_3->id);
+                                        ?>
+                                        <li>
+                                            <span class="level-2"><?= CHtml::encode($level_3->name); ?></span>
+                                            <ul>
+                                                <?php
+                                                    if ($sub_menu_4):
+                                                        foreach ($sub_menu_4 as $level_4):
+                                                            ?>
+                                                            <li>
+                                                                <a href="<?= Yii::app()->controller->createUrl('products/index', array('id' => $level_4->id)); ?>"
+                                                                   title="" class="level-3">
+                                                                    <?= CHtml::encode($level_4->name); ?>
+                                                                </a>
+                                                            </li>
+                                                        <?php endforeach; ?>
+                                                    <?php endif; ?>
+                                            </ul>
+                                        </li>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                        </ul>
+                    </li>
+                    <?php
+                    $index++;
+                endforeach; ?>
+            <?php endif; ?>
     </ul>
 </nav>
 

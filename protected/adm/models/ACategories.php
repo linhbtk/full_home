@@ -76,7 +76,7 @@
             $criteria->compare('cd.name', $this->name, TRUE);
 
             return new CActiveDataProvider($this, array(
-                'criteria' => $criteria,
+                'criteria'   => $criteria,
                 'sort'       => array(
                     'defaultOrder' => 'id DESC',
                 ),
@@ -161,5 +161,17 @@
             }
 
             return ($model) ? CHtml::encode($model->name) : '';
+        }
+
+        /**
+         * @return bool
+         */
+        public function beforeSave()
+        {
+            if (empty($this->parent_id)) {
+                $this->parent_id = 0;
+            }
+
+            return TRUE;
         }
     }

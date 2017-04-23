@@ -12,115 +12,68 @@
                        class="parent <?= ($controller == 'site' && $action == 'index') ? 'active' : ''; ?>"><?= Yii::t('web/full_home', 'homepage'); ?></a>
                 </li>
                 <li>
-                    <a href="" title=""
+                    <a href="#" title=""
                        class="parent <?= ($controller == 'site' && $action == 'about') ? 'active' : ''; ?>"><?= Yii::t('web/full_home', 'about'); ?></a>
                 </li>
                 <li class="">
-                    <a href="<?= Yii::app()->controller->createUrl('products/index'); ?>" title=""
+                    <a href="#" title=""
                        class="parent <?= ($controller == 'products' && ($action == 'index' || $action == 'detail')) ? 'active' : ''; ?>"><?= Yii::t('web/full_home', 'product'); ?></a>
                     <ul>
                         <li class="sub_menu">
-                            <div class='col-md-3'>
-                                <div class="item">
-                                    <a href="" class="level-2">
-                                        <img src="<?= Yii::app()->theme->baseUrl ?>/images/ic_menu_1_1.png" alt=""
-                                             class="icon">
-                                        Gia dụng
-                                    </a>
-                                    <ul class='dropdown-inner-list'>
-                                        <li>
-                                            <a href="" class="font_14 white" title="">Bình nước <img
-                                                    src="<?= Yii::app()->theme->baseUrl ?>/images/arrow.png" alt=""
-                                                    class="arrow"></a>
-                                        </li>
-                                        <li>
-                                            <a href="" class="font_13 gray" title=""><span
-                                                    class="red mar_left_10">+</span> Bình nước nhựa</a>
-                                        </li>
-                                        <li>
-                                            <a href="" class="font_13 gray" title=""><span
-                                                    class="red mar_left_10">+</span> Bình nước thủy tinh</a>
-                                        </li>
-                                        <li>
-                                            <a href="" class="font_14 white" title="">Hộp đựng thực phẩm <img
-                                                    src="<?= Yii::app()->theme->baseUrl ?>/images/arrow.png" alt=""
-                                                    class="arrow"></a>
-                                        </li>
-                                        <li>
-                                            <a href="" class="font_13 gray" title=""><span
-                                                    class="red mar_left_10">+</span> Hộp nhựa</a>
-                                        </li>
-                                        <li>
-                                            <a href="" class="font_13 gray" title=""><span
-                                                    class="red mar_left_10">+</span> Hộp thủy tinh</a>
-                                        </li>
-                                        <li>
-                                            <a href="" class="font_14 white" title="">Thớt</a>
-                                        </li>
-                                        <li>
-                                            <a href="" class="font_14 white" title="">Găng Tay</a>
-                                        </li>
-                                        <li>
-                                            <a href="" class="font_14 white" title="">Dụng cụ vệ sinh</a>
-                                        </li>
-                                        <li>
-                                            <a href="" class="font_14 white" title="">Đồ dùng nhà tắm</a>
-                                        </li>
-                                        <li>
-                                            <a href="" class="font_14 white" title="">Túi giặt</a>
-                                        </li>
-                                        <li>
-                                            <a href="" class="font_14 white" title="">Khác</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class='col-md-3'>
-                                <div class="item border_left_2">
-                                    <a href="" class="level-2">
-                                        <img src="<?= Yii::app()->theme->baseUrl ?>/images/ic_menu_1_2.png" alt=""
-                                             class="icon">
-                                        Hóa phẩm
-                                    </a>
-                                    <ul class='dropdown-inner-list'>
-                                        <li>
-                                            <a href="" class="font_14 white" title="">Mỹ phẩm dưỡng da</a>
-                                        </li>
-                                        <li>
-                                            <a href="" class="font_14 white" title="">Chăm sóc tóc</a>
-                                        </li>
-                                        <li>
-                                            <a href="" class="font_14 white" title="">Mỹ phẩm trang điểm</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class='col-md-3'>
-                                <div class="item border_left_2">
-                                    <a href="" class="level-2">
-                                        <img src="<?= Yii::app()->theme->baseUrl ?>/images/ic_menu_1_3.png" alt=""
-                                             class="icon">
-                                        May mặc
-                                    </a>
-                                    <ul class='dropdown-inner-list'>
-                                        <li>
-                                            <a href="" class="font_14 white" title="">Tất nam</a>
-                                        </li>
-                                        <li>
-                                            <a href="" class="font_14 white" title="">Tất nữ</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class='col-md-3'>
-                                <div class="item border_left_2">
-                                    <a href="" class="level-2">
-                                        <img src="<?= Yii::app()->theme->baseUrl ?>/images/ic_menu_1_4.png" alt=""
-                                             class="icon">
-                                        Quà tặng
-                                    </a>
-                                </div>
-                            </div>
+                            <?php
+                                $sub_menu_2 = WCategories::getParentCategories();
+                                if ($sub_menu_2):
+                                    $index = 1;
+                                    foreach ($sub_menu_2 as $level_2):
+                                        ?>
+                                        <div class='col-md-3'>
+                                            <div class="item">
+                                                <a href="" class="level-2">
+                                                    <img
+                                                        src="<?= Yii::app()->theme->baseUrl ?>/images/ic_menu_1_<?= $index; ?>.png"
+                                                        alt=""
+                                                        class="icon">
+                                                    <?= CHtml::encode($level_2->name); ?>
+                                                </a>
+                                                <ul class='dropdown-inner-list'>
+                                                    <?php
+                                                        $sub_menu_3 = WCategories::getCategoriesByParentId($level_2->id);
+                                                        if ($sub_menu_3):
+                                                            foreach ($sub_menu_3 as $level_3):
+                                                                $sub_menu_4 = WCategories::getCategoriesByParentId($level_3->id);
+                                                                ?>
+                                                                <li>
+                                                                    <a href="<?= Yii::app()->controller->createUrl('products/index', array('id' => $level_3->id)); ?>" class="font_14 white" title="">
+                                                                        <?= CHtml::encode($level_3->name); ?>
+                                                                        <?php if ($sub_menu_4): ?>
+                                                                            <img
+                                                                                src="<?= Yii::app()->theme->baseUrl ?>/images/arrow.png"
+                                                                                alt=""
+                                                                                class="arrow">
+                                                                        <?php endif; ?>
+                                                                    </a>
+                                                                </li>
+                                                                <?php
+                                                                if ($sub_menu_4):
+                                                                    foreach ($sub_menu_4 as $level_4):
+                                                                        ?>
+                                                                        <li>
+                                                                            <a href="<?= Yii::app()->controller->createUrl('products/index', array('id' => $level_4->id)); ?>" class="font_13 gray" title="">
+                                                                                <span class="red mar_left_10">+</span>
+                                                                                <?= CHtml::encode($level_4->name); ?>
+                                                                            </a>
+                                                                        </li>
+                                                                    <?php endforeach; ?>
+                                                                <?php endif; ?>
+                                                            <?php endforeach; ?>
+                                                        <?php endif; ?>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <?php
+                                        $index++;
+                                    endforeach; ?>
+                                <?php endif; ?>
                         </li>
                     </ul>
                 </li>

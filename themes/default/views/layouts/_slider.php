@@ -1,22 +1,26 @@
 <div class="owl-carousel">
     <?php
-        if (isset($stacks) && $stacks == 1):?>
-            <div class="item">
-                <img src="<?= Yii::app()->theme->baseUrl ?>/images/slider_1.jpg" alt="">
-            </div>
-            <?php
-        elseif (isset($stacks) && $stacks == 2):
-            ?>
-            <div class="item">
-                <img src="<?= Yii::app()->theme->baseUrl ?>/images/slider_2.jpg" alt="">
-            </div>
-            <?php
-        else:
-            ?>
-            <div class="item">
-                <img src="<?= Yii::app()->theme->baseUrl ?>/images/slider_3.jpg" alt="">
-            </div>
-            <?php
-        endif;
-    ?>
+        $detect  = new MyMobileDetect();
+        $banners = WBanners::getListBannersType(WBanners::TYPE_SLIDER, (isset($stacks) ? $stacks : WBanners::STACK_1));
+        if ($banners && is_array($banners)):
+            foreach ($banners as $item):
+                if ($detect->isMobile()) {
+                    $link_img = Yii::app()->params->upload_dir . $item->img_mobile;
+                } else {
+                    $link_img = Yii::app()->params->upload_dir . $item->img_desktop;
+                }
+                if ($item->target_link != ''):
+                    ?>
+                    <a href="<?= $item->target_link ?>" title="<?= CHtml::encode($item->title); ?>">
+                        <div class="item">
+                            <img src="<?= $link_img; ?>" alt="<?= CHtml::encode($item->title); ?>">
+                        </div>
+                    </a>
+                <?php else: ?>
+                    <div class="item">
+                        <img src="<?= $link_img; ?>" alt="<?= CHtml::encode($item->title); ?>">
+                    </div>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        <?php endif; ?>
 </div><!--end slider-->

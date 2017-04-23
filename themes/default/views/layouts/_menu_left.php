@@ -12,11 +12,11 @@
                        class="parent <?= ($controller == 'site' && $action == 'index') ? 'active' : ''; ?>"><?= Yii::t('web/full_home', 'homepage'); ?></a>
                 </li>
                 <li>
-                    <a href="" title=""
+                    <a href="#" title=""
                        class="parent <?= ($controller == 'site' && $action == 'about') ? 'active' : ''; ?>"><?= Yii::t('web/full_home', 'about'); ?></a>
                 </li>
                 <li class="">
-                    <a href="<?= Yii::app()->controller->createUrl('products/index'); ?>" title=""
+                    <a href="#" title=""
                        class="parent <?= ($controller == 'products' && ($action == 'index' || $action == 'detail')) ? 'active' : ''; ?>"><?= Yii::t('web/full_home', 'product'); ?></a>
                 </li>
                 <li>
@@ -34,131 +34,69 @@
 <div class="menu_left">
     <div class="first"><?= Yii::t('web/full_home', 'product'); ?></div>
     <div class="panel-group" id="accordion">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <div class="level-2 pad_15_0">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#menu_1">
-                        <img src="<?= Yii::app()->theme->baseUrl ?>/images/ic_menu_2_1.png" alt=""
-                             class="icon">
-                        <span>Gia dụng</span>
-                        <img src="<?= Yii::app()->theme->baseUrl ?>/images/arrow.png" alt=""
-                             class="arrow">
-                    </a>
-                </div>
-                <div id="menu_1" class="panel-collapse collapse">
-                    <ul class='panel-body'>
-                        <li class="level-3">
-                            <a href="" title="">Bình nước
-                                <img src="<?= Yii::app()->theme->baseUrl ?>/images/arrow.png" alt=""
-                                     class="arrow">
-                            </a>
-                            <ul class="has-sub">
-                                <li>
-                                    <a href="" class="font_13" title="">Bình
-                                        nước nhựa</a>
-                                </li>
-                                <li>
-                                    <a href="" class="font_13" title="">Bình
-                                        nước thủy tinh</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="level-3">
-                            <a href="" title="">Hộp đựng thực phẩm <img
-                                    src="<?= Yii::app()->theme->baseUrl ?>/images/arrow.png" alt=""
-                                    class="arrow">
-                            </a>
-                            <ul class="has-sub">
-                                <li>
-                                    <a href="" class="font_13" title="">Hộp nhựa</a>
-                                </li>
-                                <li>
-                                    <a href="" class="font_13" title="">Hộp thủy
-                                        tinh</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="level-3">
-                            <a href="" title="">Thớt</a>
-                        </li>
-                        <li class="level-3">
-                            <a href="" title="">Găng Tay</a>
-                        </li>
-                        <li class="level-3">
-                            <a href="" title="">Dụng cụ vệ sinh</a>
-                        </li>
-                        <li class="level-3">
-                            <a href="" title="">Đồ dùng nhà tắm</a>
-                        </li>
-                        <li class="level-3">
-                            <a href="" title="">Túi giặt</a>
-                        </li>
-                        <li class="level-3">
-                            <a href="" title="">Khác</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <div class="level-2">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#menu_2">
-                        <img src="<?= Yii::app()->theme->baseUrl ?>/images/ic_menu_2_2.png" alt=""
-                             class="icon">
-                        <span>Hóa phẩm</span>
-                        <img src="<?= Yii::app()->theme->baseUrl ?>/images/arrow.png" alt=""
-                             class="arrow">
-                    </a>
-                </div>
-                <div id="menu_2" class="panel-collapse collapse">
-                    <ul class='panel-body'>
-                        <li class="level-3">
-                            <a href="" class="font_13" title="">Mỹ phẩm dưỡng da</a>
-                        </li>
-                        <li class="level-3">
-                            <a href="" class="font_13" title="">Chăm sóc tóc</a>
-                        </li>
-                        <li class="level-3">
-                            <a href="" class="font_13" title="">Mỹ phẩm trang điểm</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <div class="level-2">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#menu_3">
-                        <img src="<?= Yii::app()->theme->baseUrl ?>/images/ic_menu_2_3.png" alt=""
-                             class="icon">
-                        <span>May mặc</span>
-                        <img src="<?= Yii::app()->theme->baseUrl ?>/images/arrow.png" alt=""
-                             class="arrow">
-                    </a>
-                </div>
-                <div id="menu_3" class="panel-collapse collapse">
-                    <ul class='panel-body'>
-                        <li class="level-3">
-                            <a href="" class="font_13" title="">Tất nam</a>
-                        </li class="level-3">
-                        <li class="level-3">
-                            <a href="" class="font_13" title="">Tất nữ</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <div class="level-2">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#menu_4">
-                        <img src="<?= Yii::app()->theme->baseUrl ?>/images/ic_menu_2_4.png" alt=""
-                             class="icon">
-                        <span>Quà tặng</span>
-                    </a>
-                </div>
-            </div>
-        </div>
+        <?php
+            $sub_menu_2 = WCategories::getParentCategories();
+            if ($sub_menu_2):
+                $index = 1;
+                foreach ($sub_menu_2 as $level_2):
+                    $sub_menu_3 = WCategories::getCategoriesByParentId($level_2->id);
+                    ?>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="level-2 pad_15_0">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#menu_<?= $index; ?>">
+                                    <img src="<?= Yii::app()->theme->baseUrl ?>/images/ic_menu_2_<?= $index; ?>.png"
+                                         alt=""
+                                         class="icon">
+                                    <span><?= CHtml::encode($level_2->name); ?></span>
+                                    <?php if ($sub_menu_3): ?>
+                                        <img src="<?= Yii::app()->theme->baseUrl ?>/images/arrow.png" alt=""
+                                             class="arrow">
+                                    <?php endif; ?>
+                                </a>
+                            </div>
+                            <div id="menu_<?= $index; ?>" class="panel-collapse collapse">
+                                <ul class='panel-body'>
+                                    <?php
+                                        if ($sub_menu_3):
+                                            foreach ($sub_menu_3 as $level_3):
+                                                $sub_menu_4 = WCategories::getCategoriesByParentId($level_3->id);
+                                                ?>
+                                                <li class="level-3">
+                                                    <a href="<?= Yii::app()->controller->createUrl('products/index', array('id' => $level_3->id)); ?>"
+                                                       title="">
+                                                        <?= CHtml::encode($level_3->name); ?>
+                                                        <?php if ($sub_menu_4): ?>
+                                                            <img
+                                                                src="<?= Yii::app()->theme->baseUrl ?>/images/arrow.png"
+                                                                alt=""
+                                                                class="arrow">
+                                                        <?php endif; ?>
+                                                    </a>
+                                                    <ul class="has-sub">
+                                                        <?php
+                                                            if ($sub_menu_4):
+                                                                foreach ($sub_menu_4 as $level_4):
+                                                                    ?>
+                                                                    <li>
+                                                                        <a href="<?= Yii::app()->controller->createUrl('products/index', array('id' => $level_4->id)); ?>"
+                                                                           class="font_13" title="">
+                                                                            <?= CHtml::encode($level_4->name); ?>
+                                                                        </a>
+                                                                    </li>
+                                                                <?php endforeach; ?>
+                                                            <?php endif; ?>
+                                                    </ul>
+                                                </li>
+                                            <?php endforeach; ?>
+                                        <?php endif; ?>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                    $index++;
+                endforeach; ?>
+            <?php endif; ?>
     </div>
 </div>
