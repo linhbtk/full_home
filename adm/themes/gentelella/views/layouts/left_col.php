@@ -3,7 +3,7 @@
 
         <div class="navbar nav_title" style="border: 0;">
             <a href="<?php echo $this->createUrl('/aSite/index') ?>" class="site_title"><i
-                        class="fa fa-star-half-o"></i>
+                    class="fa fa-star-half-o"></i>
                 <span><?php echo CHtml::encode(Yii::app()->name); ?></span></a>
         </div>
         <div class="clearfix"></div>
@@ -41,76 +41,25 @@
                             ),
                             'items'              => array(
                                 array(
-                                    'label'   => '<i class="fa fa-list"></i> Quản lý Danh mục',
+                                    'label'   => '<i class="fa fa-list"></i> ' . Yii::t('adm/menu', 'menu_categories'),
                                     'url'     => array('/aCategories'),
-                                    'visible' => Yii::app()->user->checkAccess('ACategories.*')
+                                    'visible' => Yii::app()->user->checkAccess('aCategories.*')
                                 ),
                                 array(
-                                    'label'   => '<i class="fa fa-music"></i> Quản lý Media',
-                                    'url'     => array('/aMedia'),
-                                    'visible' =>  Yii::app()->user->checkAccess('AMedia.*'),
+                                    'label'   => '<i class="fa fa-tags"></i> ' . Yii::t('adm/menu', 'menu_products'),
+                                    'url'     => array('/aProducts'),
+                                    'visible' => Yii::app()->user->checkAccess('aProducts.*'),
                                 ),
                                 array(
-
-                                    'url'     => array('/aChannel/admin'),
-                                    'label'   => '<i class="fa fa-book"></i> ' . Yii::t('adm/menu', 'menu_channel'),
-                                    'visible' => Yii::app()->user->checkAccess('AChannel.*'),
-                                ),
-                                array(
-
-                                    'url'     => array('/aNews/admin'),
-                                    'label'   => '<i class="fa fa-newspaper-o"></i> ' . Yii::t('adm/menu', 'menu_anews'),
-                                    'visible' => Yii::app()->user->checkAccess('ANews.*'),
-                                ),
-                                array(
-
-                                    'url'     => array('/aArtist'),
-                                    'label'   => '<i class="fa fa-user"></i> ' . Yii::t('adm/menu', 'menu_artist'),
-                                    'visible' => Yii::app()->user->checkAccess('AArtist.*'),
-                                ),
-                                array(
-
-                                    'url'     => array('/aAlbum'),
-                                    'label'   => '<i class="fa fa-caret-square-o-up"></i> ' . Yii::t('adm/menu', 'menu_album'),
-                                    'visible' => Yii::app()->user->checkAccess('AAlbum.*'),
-                                ),
-                                array(
-                                    'url'     => array('/aTvSchedule/admin'),
-                                    'label'   => '<i class="fa fa-calendar"></i> ' . Yii::t('adm/menu', 'menu_tv_schedule'),
-                                    'visible' => Yii::app()->user->checkAccess('ATvSchedule.*'),
-                                ),
-                                array(
+                                    'label'   => '<i class="fa fa-picture-o" aria-hidden="true"></i> ' . Yii::t('adm/menu', 'menu_banners'),
                                     'url'     => array('/aBanners'),
-                                    'label'   => '<i class="fa fa-image"></i> ' . Yii::t('adm/menu', 'menu_banners'),
-                                    'visible' =>  Yii::app()->user->checkAccess('ABanners.*'),
+                                    'visible' => Yii::app()->user->checkAccess('aBanners.*'),
                                 ),
                                 array(
-                                    'label'   => '<i class="fa fa-user"></i> ' . Yii::t('adm/menu', 'menu_customer'),
-                                    'url'     => array('/aCustomers/admin'),
-                                    'visible' => Yii::app()->user->checkAccess('ACustomers.*'),
+                                    'label'   => '<i class="fa fa-users" aria-hidden="true"></i> ' . Yii::t('adm/menu', 'menu_partners'),
+                                    'url'     => array('/aPartners'),
+                                    'visible' => Yii::app()->user->checkAccess('aPartners.*'),
                                 ),
-                                array(
-                                    'url'     => 'javascript:;',
-                                    'label'   => '<i class="fa fa-newspaper-o"></i> ' . Yii::t('adm/menu', 'Thống kê'),
-                                    'visible' => (Yii::app()->user->checkAccess('AViewStat.*') || Yii::app()->user->checkAccess('AUsers.*')),
-                                    'items'   => array(
-//                                        array(
-//                                            'url'   => array('/aMedia/report'),
-//                                            'label' => 'Thống kê chi tiết',
-//                                        ),
-                                        array(
-                                            'url'     => array('/aViewStat/admin'),
-                                            'label'   => 'Thống kê lượt view',
-                                            'visible' => Yii::app()->user->checkAccess('AViewStat.*'),
-                                        ),
-                                        array(
-                                            'url'     => array('/aUsers/admin'),
-                                            'label'   => 'Tổng số lượt view',
-                                            'visible' => Yii::app()->user->checkAccess('AUsers.*'),
-                                        ),
-                                    ),
-                                ),
-
                             ),
                         )
                     );

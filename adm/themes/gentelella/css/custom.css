@@ -7023,7 +7023,7 @@ a.preview {
 }
 
 .editable {
-    color: red;
+    color: #428bca;
     border-bottom: dashed 1px white !important;
 }
 

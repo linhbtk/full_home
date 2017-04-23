@@ -1,28 +1,15 @@
 <?php
 
-    /**
-     * This is the model class for table "{{banners}}".
-     *
-     * The followings are the available columns in table '{{banners}}':
-     *
-     * @property string  $id
-     * @property string  $title
-     * @property string  $file_name
-     * @property string  $file_ext
-     * @property string  $img_desktop
-     * @property string  $img_mobile
-     * @property string  $target_link
-     * @property string  $content_html
-     * @property integer $sort_order
-     * @property integer $status
-     * @property string  $type
-     */
     class ABanners extends Banners
     {
         CONST BANNER_ACTIVE   = 1;
         CONST BANNER_INACTIVE = 0;
-        CONST ONE             = 1;
-        CONST ZERO            = 0;
+        CONST TYPE_BANNER     = 'banner';
+        CONST TYPE_SLIDER     = 'slider';
+        CONST STACK_1         = 1;
+        CONST STACK_2         = 2;
+        CONST STACK_3         = 3;
+
         public $old_file;
         public $old_img_mobile;
 
@@ -35,8 +22,7 @@
             // will receive user inputs.
             return array(
                 array('title, status', 'required'),
-                array('sort_order, status', 'numerical', 'integerOnly' => TRUE),
-//                array('sort_order', 'sort_order_validate', ''),
+                array('sort_order, status, stacks', 'numerical', 'integerOnly' => TRUE),
                 array('title', 'length', 'max' => 255),
                 array('file_name', 'length', 'max' => 500),
                 array('file_ext', 'length', 'max' => 10),
@@ -54,20 +40,9 @@
 //                array('sort_order', 'unique', 'message' => 'The order already exists!'),
                 // The following rule is used by search().
                 // @todo Please remove those attributes that should not be searched.
-                array('id, title, file_name, file_ext, img_desktop, img_mobile, target_link, content_html, sort_order, status, type', 'safe', 'on' => 'search'),
+                array('id, title, file_name, file_ext, img_desktop, img_mobile, target_link, content_html, sort_order, status, type, stacks', 'safe', 'on' => 'search'),
             );
         }
-
-//        public function sort_order_validate($attribute, $params)
-//        {
-//            if ($params['status'] === self::ZERO)
-//                $pattern = '/^(?=.*[a-zA-Z0-9]).{5,}$/';
-//            elseif ($params['strength'] === self::ONE)
-//                $pattern = '/^(?=.*\d(?=.*\d))(?=.*[a-zA-Z](?=.*[a-zA-Z])).{5,}$/';
-//
-//            if (!preg_match($pattern, $this->$attribute))
-//                $this->addError($attribute, '');
-//        }
 
         /**
          * @return array relational rules.
@@ -86,18 +61,19 @@
         {
             return array(
                 'id'              => Yii::t('adm/label', 'id'),
-                'title'           => 'Tiêu đề',
+                'title'           => Yii::t('adm/label', 'title'),
                 'file_name'       => Yii::t('adm/label', 'file_name'),
                 'file_ext'        => Yii::t('adm/label', 'file_ext'),
-                'img_desktop'     => 'Ảnh đại diện',
+                'img_desktop'     => Yii::t('adm/label', 'img_desktop'),
                 'img_mobile'      => Yii::t('adm/label', 'img_mobile'),
-                'target_link'     => 'Đường dẫn',
-                'content_html'    => 'Nội dung banner',
-                'sort_order'      => 'Thứ tự trong slide',
-                'status'          => 'Trạng thái',
+                'target_link'     => Yii::t('adm/label', 'target_link'),
+                'content_html'    => Yii::t('adm/label', 'content_html'),
+                'sort_order'      => Yii::t('adm/label', 'sort_order'),
+                'status'          => Yii::t('adm/label', 'status'),
                 'file'            => Yii::t('adm/label', 'file'),
                 'file_img_mobile' => Yii::t('adm/label', 'file_img_mobile'),
-                'type'            => 'Loại banner',
+                'type'            => Yii::t('adm/label', 'type'),
+                'stacks'          => Yii::t('adm/label', 'stacks'),
             );
         }
 
@@ -113,12 +89,12 @@
          * @return CActiveDataProvider the data provider that can return the models
          * based on the search/filter conditions.
          */
-        public function search($status = NULL)
+        public function search($type = NULL)
         {
             // @todo Please modify the following code to remove attributes that should not be searched.
 
-            if (isset($status) && $status != '') {
-                $this->status = $status;
+            if (isset($type) && $type != '') {
+                $this->type = $type;
             }
 
             $criteria = new CDbCriteria;
@@ -134,14 +110,15 @@
             $criteria->compare('sort_order', $this->sort_order);
             $criteria->compare('status', $this->status);
             $criteria->compare('type', $this->type, TRUE);
+            $criteria->compare('stacks', $this->stacks, TRUE);
 
             return new CActiveDataProvider($this, array(
                 'criteria'   => $criteria,
                 'sort'       => array(
-                    'defaultOrder' => 'sort_order',
+                    'defaultOrder' => 'id DESC',
                 ),
                 'pagination' => array(
-                    'pageSize' => 10,
+                    'pageSize' => 30,
                 )
             ));
         }
@@ -183,35 +160,26 @@
         }
 
         /**
-         * Get image url
+         * @param $images
          *
          * @return string
          */
-        public function getImageUrl($mages)
+        public function getImageUrl($images)
         {
-            $dir_root = '../';
+            $dir_root = Yii::app()->params->upload_dir_path;
 
-            return ($mages && file_exists($dir_root . $mages)) ? CHtml::image($dir_root . $mages, $this->title, array("width" => "100px", "height" => "60px", "title" => $this->title)) : CHtml::image(Yii::app()->theme->baseUrl . "/images/no_img.png", "no image", array("width" => "100px", "height" => "60px", "title" => "no image"));
-        }
-
-        /**
-         * Get image url
-         *
-         * @return string
-         */
-        public function getImageMobile()
-        {
-            $dir_root = '../';
-
-            return ($this->img_mobile && file_exists($dir_root . $this->img_mobile)) ? CHtml::image($dir_root . $this->img_mobile, $this->title, array("width" => "100px", "height" => "60px", "title" => $this->title)) : CHtml::image(Yii::app()->theme->baseUrl . "/images/no_img.png", "no image", array("width" => "100px", "height" => "60px", "title" => "no image"));
+            return CHtml::image($dir_root . $images, $this->title, array("width" => "100px", "height" => "60px", "title" => $this->title));
         }
 
         /**
          * @return array
          */
-        public function getListCategoriesType()
+        public function getListBannerType()
         {
-            return Yii::app()->params->categories_type;
+            return array(
+                self::TYPE_BANNER => Yii::t('adm/label', 'banner'),
+                self::TYPE_SLIDER => Yii::t('adm/label', 'slider'),
+            );
         }
 
         /**
@@ -219,21 +187,34 @@
          *
          * @return string
          */
-        public function getCategoriesTypeLabel()
+        public function getBannerTypeLabel()
         {
-            $type = $this->getListCategoriesType();
+            $type = $this->getListBannerType();
 
             return (isset($type[$this->type])) ? $type[$this->type] : '';
         }
 
-        public function beforeSave()
+        /**
+         * @return array
+         */
+        public function getListBannerStacks()
         {
-            $p                  = new CHtmlPurifier();
-            $this->title        = $p->purify($this->title);
-            $this->target_link  = $p->purify($this->target_link);
-            $this->content_html = $p->purify($this->content_html);
-            $this->sort_order   = $p->purify($this->sort_order);
+            return array(
+                self::STACK_1 => Yii::t('adm/label', 'stack_1'),
+                self::STACK_2 => Yii::t('adm/label', 'stack_2'),
+                self::STACK_3 => Yii::t('adm/label', 'stack_3'),
+            );
+        }
 
-            return parent::beforeSave(); // TODO: Change the autogenerated stub
+        /**
+         * get label type
+         *
+         * @return string
+         */
+        public function getBannerStacksLabel()
+        {
+            $type = $this->getListBannerStacks();
+
+            return (isset($type[$this->stacks])) ? $type[$this->stacks] : '';
         }
     }

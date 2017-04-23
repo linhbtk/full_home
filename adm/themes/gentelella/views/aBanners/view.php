@@ -3,81 +3,57 @@
     /* @var $model ABanners */
 
     $this->breadcrumbs = array(
-        'Quản lý banner' => array('admin'),
+        Yii::t('adm/label', 'banners') => array('admin'),
         $model->title,
     );
 
-    //    $this->menu = array(
-    //        array('label' => Yii::t('adm/artist', 'Create'), 'url' => array('create')),
-    //        array('label' => Yii::t('adm/artist', 'Update'), 'url' => array('update', 'id' => $model->id)),
-    ////        array('label' => Yii::t('adm/artist', 'Delete'), 'url' => '#', 'linkOptions' => array('submit' => array('delete', 'id' => $model->id), 'confirm' => 'Are you sure you want to delete this item?')),
-    //        array('label' => Yii::t('adm/artist', 'Manage'), 'url' => array('admin')),
-    //    );
-
-    //    print_r($this->menu);die();
-
+    $this->menu = array(
+        array('label' => Yii::t('adm/label', 'create'), 'url' => array('create')),
+        array('label' => Yii::t('adm/label', 'update'), 'url' => array('update', 'id' => $model->id)),
+        array('label' => Yii::t('adm/label', 'manage_banners'), 'url' => array('admin')),
+    );
 ?>
-<div id="sidebar">
-    <a class="btn btn-primary" href="/citv/adm/index.php?r=aBanners/create">Tạo mới</a>
-    <a class="btn btn-primary" href="/citv/adm/index.php?r=aBanners/update&amp;id=<?= CHtml::encode($model->id) ?>">Cập nhật</a>
-    <a class="btn btn-primary" href="/citv/adm/index.php?r=aBanners/admin">Quản lý album</a>
-</div
-<div class="x_panel">
-    <div class="x_title">
-        <h1>Thông tin banner</h1>
-    </div>
-    <div class="x_content">
-        <div class="row">
-            <div class="col-md-2 col-sm-2 col-xs-2">
-                <div class="row">
-                    <span class="col-md-12">
-                        <?php if ($model->img_mobile != '') { ?>
-                            <img width="90%" src="<?= "../" . $model->img_mobile ?>" alt="<?= $model->title ?>"/>
-                        <?php } else {
-                            echo 'No thumbnail yet.';
-                        } ?>
-                    </span>
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2><?php echo Yii::t('adm/label', 'view') ?>: <?php echo $model->title; ?></h2>
 
-                </div>
+                <div class="clearfix"></div>
             </div>
-            <div class="col-md-10 col-sm-8 col-xs-10">
+
+            <div class="x_content">
                 <?php $this->widget('booster.widgets.TbDetailView', array(
                     'data'       => $model,
                     'attributes' => array(
+                        'id',
                         array(
-                            'name'  => 'title',
+                            'name'  => 'img_desktop',
                             'type'  => 'raw',
-                            'value' => CHtml::encode($model->title),
+                            'value' => $model->getImageUrl($model->img_desktop),
                         ),
                         array(
-                            'name'  => 'target_link',
+                            'name'  => 'img_mobile',
                             'type'  => 'raw',
-                            'value' => CHtml::encode($model->target_link),
+                            'value' => $model->getImageUrl($model->img_mobile),
                         ),
-                        array(
-                            'name'  => 'sort_order',
-                            'value' => CHtml::encode($model->sort_order),
-                        ),
+                        'title',
+                        'target_link',
+                        'sort_order',
                         array(
                             'name'  => 'status',
-                            'value' => CHtml::encode($model->getStatusLabel()),
+                            'type'  => 'raw',
+                            'value' => $model->getStatusLabel(),
                         ),
                         array(
-                            'name'  => 'content_html',
-                            'value' => CHtml::encode($model->content_html),
+                            'name'  => 'type',
+                            'type'  => 'raw',
+                            'value' => $model->getCategoriesTypeLabel(),
                         ),
-
+                        'content_html',
                     ),
                 )); ?>
             </div>
-
         </div>
     </div>
 </div>
-
-<script>
-    $(document).ready(function () {
-        $('#sidebar').css('display', 'block');
-    });
-</script>
-

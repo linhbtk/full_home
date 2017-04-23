@@ -1,31 +1,34 @@
 <?php
 
     /**
-     * This is the model class for table "{{banners}}".
+     * This is the model class for table "{{files}}".
      *
-     * The followings are the available columns in table '{{banners}}':
+     * The followings are the available columns in table '{{files}}':
      *
      * @property string  $id
-     * @property string  $title
+     * @property string  $media_id
+     * @property integer $languages_id
      * @property string  $file_name
      * @property string  $file_ext
-     * @property string  $img_desktop
-     * @property string  $img_mobile
-     * @property string  $target_link
-     * @property string  $content_html
+     * @property integer $file_size
+     * @property integer $duration
+     * @property string  $quality
+     * @property string  $folder_path
      * @property integer $sort_order
-     * @property string  $type
+     * @property integer $part_number
+     * @property string  $upload_time
+     * @property string  $extra_info
+     * @property string  $subtitle
      * @property integer $status
-     * @property integer $stacks
      */
-    class Banners extends CActiveRecord
+    class Files extends CActiveRecord
     {
         /**
          * @return string the associated database table name
          */
         public function tableName()
         {
-            return '{{banners}}';
+            return '{{files}}';
         }
 
         /**
@@ -36,17 +39,16 @@
             // NOTE: you should only define rules for those attributes that
             // will receive user inputs.
             return array(
-                array('title, file_name, file_ext, img_desktop, img_mobile, status', 'required'),
-                array('sort_order, status, stacks', 'numerical', 'integerOnly' => TRUE),
-                array('title', 'length', 'max' => 255),
+                array('languages_id, file_size, duration, sort_order, part_number, status', 'numerical', 'integerOnly' => TRUE),
+                array('media_id', 'length', 'max' => 11),
                 array('file_name', 'length', 'max' => 500),
                 array('file_ext', 'length', 'max' => 10),
-                array('img_desktop, img_mobile, target_link', 'length', 'max' => 1000),
-                array('type', 'length', 'max' => 50),
-                array('content_html', 'safe'),
+                array('quality', 'length', 'max' => 20),
+                array('folder_path, subtitle', 'length', 'max' => 1000),
+                array('upload_time, extra_info', 'safe'),
                 // The following rule is used by search().
                 // @todo Please remove those attributes that should not be searched.
-                array('id, title, file_name, file_ext, img_desktop, img_mobile, target_link, content_html, sort_order, status, type, stacks', 'safe', 'on' => 'search'),
+                array('id, media_id, languages_id, file_name, file_ext, file_size, duration, quality, folder_path, sort_order, part_number, upload_time, extra_info, subtitle, status', 'safe', 'on' => 'search'),
             );
         }
 
@@ -67,17 +69,20 @@
         {
             return array(
                 'id'           => 'ID',
-                'title'        => 'Title',
+                'media_id'     => 'Media',
+                'languages_id' => 'Languages',
                 'file_name'    => 'File Name',
                 'file_ext'     => 'File Ext',
-                'img_desktop'  => 'Img Desktop',
-                'img_mobile'   => 'Img Mobile',
-                'target_link'  => 'Target Link',
-                'content_html' => 'Content Html',
+                'file_size'    => 'File Size',
+                'duration'     => 'Duration',
+                'quality'      => 'Quality',
+                'folder_path'  => 'Folder Path',
                 'sort_order'   => 'Sort Order',
+                'part_number'  => 'Part Number',
+                'upload_time'  => 'Upload Time',
+                'extra_info'   => 'Extra Info',
+                'subtitle'     => 'Subtitle',
                 'status'       => 'Status',
-                'type'         => 'Type',
-                'stacks'       => 'Stacks',
             );
         }
 
@@ -100,17 +105,20 @@
             $criteria = new CDbCriteria;
 
             $criteria->compare('id', $this->id, TRUE);
-            $criteria->compare('title', $this->title, TRUE);
+            $criteria->compare('media_id', $this->media_id, TRUE);
+            $criteria->compare('languages_id', $this->languages_id);
             $criteria->compare('file_name', $this->file_name, TRUE);
             $criteria->compare('file_ext', $this->file_ext, TRUE);
-            $criteria->compare('img_desktop', $this->img_desktop, TRUE);
-            $criteria->compare('img_mobile', $this->img_mobile, TRUE);
-            $criteria->compare('target_link', $this->target_link, TRUE);
-            $criteria->compare('content_html', $this->content_html, TRUE);
+            $criteria->compare('file_size', $this->file_size);
+            $criteria->compare('duration', $this->duration);
+            $criteria->compare('quality', $this->quality, TRUE);
+            $criteria->compare('folder_path', $this->folder_path, TRUE);
             $criteria->compare('sort_order', $this->sort_order);
+            $criteria->compare('part_number', $this->part_number);
+            $criteria->compare('upload_time', $this->upload_time, TRUE);
+            $criteria->compare('extra_info', $this->extra_info, TRUE);
+            $criteria->compare('subtitle', $this->subtitle, TRUE);
             $criteria->compare('status', $this->status);
-            $criteria->compare('type', $this->type, TRUE);
-            $criteria->compare('stacks', $this->stacks, TRUE);
 
             return new CActiveDataProvider($this, array(
                 'criteria' => $criteria,
@@ -123,7 +131,7 @@
          *
          * @param string $className active record class name.
          *
-         * @return Banners the static model class
+         * @return Files the static model class
          */
         public static function model($className = __CLASS__)
         {

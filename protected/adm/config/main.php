@@ -9,7 +9,8 @@
 // CWebApplication properties can be configured here.
     $admArray = array(
         'basePath'          => $base,
-        'preload'           => array('log',
+        'preload'           => array(
+            'log',
             'yiibooster',
         ),
         'controllerPath'    => $adm . '/controllers',
@@ -31,7 +32,7 @@
         ),
         'language'          => 'vi',
         'modules'           => array(
-            'user' => array(
+            'user'   => array(
                 'tableUsers'          => 'tbl_users',
                 'tableProfiles'       => 'tbl_profiles',
                 'tableProfileFields'  => 'tbl_profiles_fields',
@@ -99,13 +100,13 @@
 
         // application components
         'components'        => array(
-            'user'        => array(
+            'user'         => array(
                 'class'          => 'RWebUser',
                 // enable cookie-based authentication
                 'allowAutoLogin' => TRUE,
                 'loginUrl'       => array('/user/login'),
             ),
-            'authManager' => array(
+            'authManager'  => array(
                 'class'           => 'RDbAuthManager',
                 'connectionID'    => 'db',
                 'defaultRoles'    => array('Authenticated'),
@@ -148,7 +149,7 @@
             ),
         ),
 
-        'theme' => 'gentelella',
+        'theme'             => 'gentelella',
     );
 
     if (!function_exists('w3_array_union_recursive')) {

@@ -5,19 +5,6 @@
     $this->breadcrumbs = array(
         Yii::t('adm/label', 'banners'),
     );
-
-    Yii::app()->clientScript->registerScript('search', "
-$('.search-button').click(function(){
-	$('.search-form').toggle();
-	return false;
-});
-$('.search-form form').submit(function(){
-	$('#abanners-grid').yiiGridView('update', {
-		data: $(this).serialize()
-	});
-	return false;
-});
-");
 ?>
 <div class="x_panel">
     <div class="x_title">
@@ -37,14 +24,17 @@ $('.search-form form').submit(function(){
                 'type'        => 'tabs',
                 'tabs'        => array(
                     array(
-                        'label'   => Yii::t('adm/label', 'Kích hoạt'),
-                        'content' => $this->renderPartial('_tab_list_by_type', array('model' => $model, 'status' => '1'), TRUE),
+                        'label'   => Yii::t('adm/label', 'all'),
+                        'content' => $this->renderPartial('_tab_list_by_type', array('model' => $model, 'type' => ''), TRUE),
                         'active'  => TRUE
                     ),
                     array(
-                        'label'   => Yii::t('adm/label', 'Ẩn'),
-                        'content' => $this->renderPartial('_tab_list_by_type', array('model' => $model, 'status' => '0'), TRUE),
-
+                        'label'   => Yii::t('adm/label', ABanners::TYPE_BANNER),
+                        'content' => $this->renderPartial('_tab_list_by_type', array('model' => $model, 'type' => ABanners::TYPE_BANNER), TRUE),
+                    ),
+                    array(
+                        'label'   => Yii::t('adm/label', ABanners::TYPE_SLIDER),
+                        'content' => $this->renderPartial('_tab_list_by_type', array('model' => $model, 'type' => ABanners::TYPE_SLIDER), TRUE),
                     ),
                 ),
                 'htmlOptions' => array('class' => 'site_manager')
@@ -52,4 +42,3 @@ $('.search-form form').submit(function(){
         ); ?>
     </div>
 </div>
-

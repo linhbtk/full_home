@@ -1,6 +1,6 @@
 <?php
 
-    class ABannersController extends AController
+    class APartnersController extends AController
     {
         /**
          * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -17,7 +17,7 @@
             return array(
 //                'accessControl', // perform access control for CRUD operations
 //                'postOnly + delete', // we only allow deletion via POST request
-                'rights', // perform access control for CRUD operations
+                'rights',
             );
         }
 
@@ -32,11 +32,11 @@
             return array(
                 array('allow',  // allow all users to perform 'index' and 'view' actions
                     'actions' => array('index', 'view'),
-                    'users'   => array('@'),
+                    'users'   => array('*'),
                 ),
                 array('allow', // allow authenticated user to perform 'create' and 'update' actions
                     'actions' => array('changeStatus', 'create', 'update'),
-                    'users'   => array('admin'),
+                    'users'   => array('@'),
                 ),
                 array('allow', // allow admin user to perform 'admin' and 'delete' actions
                     'actions' => array('admin', 'delete'),
@@ -66,21 +66,17 @@
          */
         public function actionCreate()
         {
-            $model = new ABanners;
+            $model = new APartners;
 
             // Uncomment the following line if AJAX validation is needed
             // $this->performAjaxValidation($model);
 
-            if (isset($_POST['ABanners'])) {
-                $model->attributes  = $_POST['ABanners'];
-                $model->img_desktop = str_replace(Yii::app()->params->upload_dir_path, '', $model->img_desktop);
-                $model->img_mobile  = str_replace(Yii::app()->params->upload_dir_path, '', $model->img_mobile);
-                $model->file_name = 'file_name';
-                $model->file_ext = 'jpg';
+            if (isset($_POST['APartners'])) {
+                $model->attributes  = $_POST['APartners'];
+                $model->folder_path = str_replace(Yii::app()->params->upload_dir_path, '', $model->folder_path);
                 if ($model->validate()) {
                     if ($model->save()) {
-//                        $this->redirect(array('view', 'id' => $model->id));
-                        $this->redirect(Yii::app()->session['userView' . Yii::app()->user->id . 'returnURL']);
+                        $this->redirect(array('view', 'id' => $model->id));
                     }
                 }
             }
@@ -98,30 +94,22 @@
          */
         public function actionUpdate($id)
         {
-            $model                 = $this->loadModel($id);
-            $model->old_file       = $model->img_desktop;
-            $model->old_img_mobile = $model->img_mobile;
-            $dir_root              = '/../';
+            $model           = $this->loadModel($id);
+            $model->old_file = $model->folder_path;
 
             // Uncomment the following line if AJAX validation is needed
             // $this->performAjaxValidation($model);
 
-            if (isset($_POST['ABanners'])) {
-                $model->attributes = $_POST['ABanners'];
-                $model->img_desktop = str_replace(Yii::app()->params->upload_dir_path, '', $model->img_desktop);
-                $model->img_mobile  = str_replace(Yii::app()->params->upload_dir_path, '', $model->img_mobile);
-                $model->file_name = 'file_name';
-                $model->file_ext = 'jpg';
+            if (isset($_POST['APartners'])) {
+                $model->attributes  = $_POST['APartners'];
+                $model->folder_path = str_replace(Yii::app()->params->upload_dir_path, '', $model->folder_path);
                 if ($model->validate()) {
                     if ($model->save()) {
-                        if (!empty($model->old_file) && ($model->old_file != $model->img_desktop) && file_exists(realpath(Yii::app()->getBasePath() . $dir_root . $model->old_file))) {
-                            $model->deleteImages($model->old_file);
+                        $dir_old_file = '/' . Yii::app()->params->upload_dir_path . $model->old_file;
+                        if (!empty($model->old_file) && ($model->old_file != $model->folder_path) && file_exists(realpath(Yii::app()->getBasePath() . $dir_old_file))) {
+                            $model->cleanup($dir_old_file);
                         }
-                        if (!empty($model->old_img_mobile) && ($model->old_img_mobile != $model->img_mobile) && file_exists(realpath(Yii::app()->getBasePath() . $dir_root . $model->old_img_mobile))) {
-                            $model->deleteImages($model->old_img_mobile);
-                        }
-//                        $this->redirect(array('view', 'id' => $model->id));
-                        $this->redirect(Yii::app()->session['userView' . Yii::app()->user->id . 'returnURL']);
+                        $this->redirect(array('view', 'id' => $model->id));
                     }
                 }
             }
@@ -139,19 +127,14 @@
          */
         public function actionDelete($id)
         {
-            $model                 = $this->loadModel($id);
-            $model->old_file       = $model->img_desktop;
-            $model->old_img_mobile = $model->img_mobile;
-            $dir_root              = '/../';
-
-            if ($model->delete()) {
-                if (!empty($model->old_file) && file_exists(realpath(Yii::app()->getBasePath() . $dir_root . $model->old_file))) {
-                    $model->deleteImages($model->old_file);
-                }
-                if (!empty($model->old_img_mobile) && file_exists(realpath(Yii::app()->getBasePath() . $dir_root . $model->old_img_mobile))) {
-                    $model->deleteImages($model->old_img_mobile);
-                }
+            $model           = $this->loadModel($id);
+            $model->old_file = $model->folder_path;
+            $dir_old_file    = '/' . Yii::app()->params->upload_dir_path . $model->old_file;
+            $this->loadModel($id)->delete();
+            if (!empty($model->old_file) && file_exists(realpath(Yii::app()->getBasePath() . $dir_old_file))) {
+                $model->cleanup($dir_old_file);
             }
+
             // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
             if (!isset($_GET['ajax']))
                 $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
@@ -162,7 +145,7 @@
          */
         public function actionIndex()
         {
-            $dataProvider = new CActiveDataProvider('ABanners');
+            $dataProvider = new CActiveDataProvider('APartners');
             $this->render('index', array(
                 'dataProvider' => $dataProvider,
             ));
@@ -173,12 +156,10 @@
          */
         public function actionAdmin()
         {
-            Yii::app()->session['userView' . Yii::app()->user->id . 'returnURL'] = Yii::app()->request->Url;
-
-            $model = new ABanners('search');
+            $model = new APartners('search');
             $model->unsetAttributes();  // clear any default values
-            if (isset($_GET['ABanners']))
-                $model->attributes = $_GET['ABanners'];
+            if (isset($_GET['APartners']))
+                $model->attributes = $_GET['APartners'];
 
             $this->render('admin', array(
                 'model' => $model,
@@ -191,12 +172,12 @@
          *
          * @param integer $id the ID of the model to be loaded
          *
-         * @return ABanners the loaded model
+         * @return APartners the loaded model
          * @throws CHttpException
          */
         public function loadModel($id)
         {
-            $model = ABanners::model()->findByPk($id);
+            $model = APartners::model()->findByPk($id);
             if ($model === NULL)
                 throw new CHttpException(404, 'The requested page does not exist.');
 
@@ -206,11 +187,11 @@
         /**
          * Performs the AJAX validation.
          *
-         * @param ABanners $model the model to be validated
+         * @param APartners $model the model to be validated
          */
         protected function performAjaxValidation($model)
         {
-            if (isset($_POST['ajax']) && $_POST['ajax'] === 'abanners-form') {
+            if (isset($_POST['ajax']) && $_POST['ajax'] === 'apartners-form') {
                 echo CActiveForm::validate($model);
                 Yii::app()->end();
             }
@@ -221,17 +202,24 @@
          */
         public function actionChangeStatus()
         {
-            $result = FALSE;
             $id     = Yii::app()->getRequest()->getParam('id');
             $status = Yii::app()->getRequest()->getParam('status');
-            $model  = ABanners::model()->findByPk($id);
+            $model  = APartners::model()->findByPk($id);
+            $result = array('status' => FALSE, 'msg' => '');
             if ($model) {
                 $model->status = $status;
                 if ($model->update()) {
-                    $result = TRUE;
+                    $result = array(
+                        'status' => TRUE,
+                        'msg'    => Yii::t('adm/label', 'alert_success')
+                    );
+                } else {
+                    $result = array(
+                        'status' => FALSE,
+                        'msg'    => Yii::t('adm/label', 'alert_fail')
+                    );
                 }
             }
-
             echo CJSON::encode($result);
             exit();
         }

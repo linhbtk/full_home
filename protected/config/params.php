@@ -1,25 +1,30 @@
 <?php
     /** Lấy tên domain gốc
-     * @param null $name: tên nối domain hiện tại
+     *
+     * @param null $name : tên nối domain hiện tại
      *
      * @return string
      */
-    function getCurrentDomain($name = null){
+    function getCurrentDomain($name = NULL)
+    {
         $pageURL = 'http';
-        if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
+        if ($_SERVER["HTTPS"] == "on") {
+            $pageURL .= "s";
+        }
         $pageURL .= "://";
         if ($_SERVER["SERVER_PORT"] != "80") {
-            $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"] . $name;
+            $pageURL .= $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . $name;
         } else {
             $pageURL .= $_SERVER["SERVER_NAME"] . $name;
         }
+
         return $pageURL;
     }
 
     return array(
-        'elastic_config'    =>  array(
-            'index' =>  'citv2',           //<=> DB in mysql
-            'hosts' =>  array(
+        'elastic_config'        => array(
+            'index' => 'citv2',           //<=> DB in mysql
+            'hosts' => array(
                 'http://localhost:9200', //default host:ip
 //                'http://10.2.0.107:8694'
 
@@ -33,39 +38,28 @@
                 //'https://user:pass@localhost:9200',  // SSL + HTTP Basic Auth
             ),
         ),
-        'allows_ips_search' =>  array(          //ip allows Api search
-//            //localhost
-//            '::1' => '::1',
-//            '127.0.0.' => '1|1',
-//
-//            //server dev
-//            '10.2.0.' => '107|107,179|179',
-//
-//            //vovthethao.vn
-//            '113.191.248.'   =>  '185|185',
-//
-//            // centech
-//            '118.70.177.' =>  '77|77',
-//            '222.252.19.'   =>  '197|197',
+        'allows_ips_search'     => array(          //ip allows Api search
         ),
-        'xml_folder'      => dirname(dirname(__FILE__)) . '/xml/',
-        'image_ext'       => array('gif', 'jpg', 'jpeg', 'pjpeg', 'png'),
-        'status'          => array(
+        'xml_folder'            => dirname(dirname(__FILE__)) . '/xml/',
+        'image_ext'             => array('gif', 'jpg', 'jpeg', 'pjpeg', 'png'),
+        'status'                => array(
             '1' => 'Kích hoạt',
             '0' => 'Tạm ngừng',
         ),
-        'time_cache' => 120,
-        'text_add' => "Add favorite",
-        'text_remove' => "",
-        'time_count_view' => "10",
+        'time_cache'            => 120,
+        'text_add'              => "Add favorite",
+        'text_remove'           => "",
+        'time_count_view'       => "10",
 //        'url_root' => "http://10.2.0.107:8694/citv",
-        'url_root' => getCurrentDomain("/citv"),
+        'url_root'              => getCurrentDomain("/citv"),
 //        'upload_url'          => getCurrentDomain("/citv"),
-        'upload_dir_path' => '../uploads/',
-        'dir_videos'      => 'videos/',
-        'dir_categories'  => 'categories',
+        'upload_dir_path'       => '../uploads/',
+        'dir_videos'            => 'videos/',
+        'dir_categories'        => 'categories',
+        'dir_products'          => 'products',
+        'dir_partners'          => 'partners',
         //--------------> IP_MAP_3G <--------------//
-        'IP_MAP_3G'       => array(
+        'IP_MAP_3G'             => array(
             // Last Update : 2015/03/09
             'VIETTEL'   => array(
                 //---- Centech IP ----//
@@ -462,34 +456,6 @@
             ),
         ),
         //--------------> IP_MAP_3G <--------------//
-
-        'os_content'            => array(
-            'ios'        => array(
-                'game'      => FALSE,
-                'video'     => FALSE,
-                'ebook'     => TRUE,
-                'wallpaper' => FALSE,
-            ),
-            'android'    => array(
-                'game'      => TRUE,
-                'video'     => FALSE,
-                'ebook'     => TRUE,
-                'wallpaper' => FALSE,
-            ),
-            'symbian_os' => array(
-                'game'      => TRUE,
-                'video'     => TRUE,
-                'ebook'     => FALSE,
-                'wallpaper' => TRUE,
-            ),
-            'desktop' => array(
-                'game'      => TRUE,
-                'video'     => FALSE,
-                'ebook'     => TRUE,
-                'wallpaper' => TRUE,
-            ),
-        ),
         'google_analytics_code' => 'UA-40742671-14',
-        'is_link_sms'           => FALSE, // true : đóng đăng ký qua wap
     );
 ?>

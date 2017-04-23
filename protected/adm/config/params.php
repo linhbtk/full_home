@@ -1,8 +1,8 @@
 <?php
     return array(
         'hashkey'                     => 'centech',
-        'project_name'                => 'Disney Portal',
-        'brand_name'                  => 'Admin CP',
+        'project_name'                => 'Full Home',
+        'brand_name'                  => 'Admin',
         'password_key'                => 'centech24072013',
         'pagination'                  => array(
             'defaultPageSize' => 30,
