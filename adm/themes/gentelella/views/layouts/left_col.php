@@ -134,18 +134,6 @@
                                     ),
                                 ),
                             ),
-
-                            array(
-                                'url'     => 'javascript:;',
-                                'label'   => '<i class="fa fa-eraser"></i> Tool <span class="fa fa-chevron-down"></span>',
-                                'visible' => !Yii::app()->user->isGuest,
-                                'items'   => array(
-                                    array(
-                                        'url'   => array('/aSendMT/index'),
-                                        'label' => 'Gửi MT',
-                                    ),
-                                ),
-                            ),
                             array(
                                 'url'     => array('/aClearCache/index'),
                                 'label'   => '<i class="fa fa-eraser"></i> ' . Yii::t('app', 'Quản lý Cache'),

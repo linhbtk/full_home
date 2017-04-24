@@ -53,22 +53,4 @@
 
             return $results;
         }
-
-        /**
-         * @param $id
-         *
-         * @return static
-         */
-        public static function getCategoryDetail($id)
-        {
-            $criteria            = new CDbCriteria();
-            $criteria->select    = 't.*, cd.name as name';
-            $criteria->join      = 'INNER JOIN tbl_categories_detail cd on cd.categories_id=t.id';
-            $criteria->condition = 't.id =:id';
-            $criteria->params    = array(':id' => $id);
-
-            $results = self::model()->find($criteria);
-
-            return $results;
-        }
     }

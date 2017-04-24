@@ -11,5 +11,9 @@
         'txt_hotline'      => 'Hotline',
         'hotline'          => '0988678783',
         'product_category' => 'Danh mục sản phẩm',
+        'product_code'     => 'Mã sản phẩm',
+        'product_size'     => 'Kích thước',
+        'product_material' => 'Chất liệu',
+        'product_price'    => 'Giá: ',
     );
 ?>

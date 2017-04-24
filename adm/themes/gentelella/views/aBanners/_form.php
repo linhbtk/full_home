@@ -217,8 +217,8 @@
     ?>
 </div><!-- form -->
 
-<input type="hidden" id="custom_crop_ratio" name="custom_crop_ratio" value="4.4">
-<input type="hidden" id="custom_crop_ratio_mobile" name="custom_crop_ratio_mobile" value="2">
+<input type="hidden" id="custom_crop_ratio" name="custom_crop_ratio" value="">
+<input type="hidden" id="custom_crop_ratio_mobile" name="custom_crop_ratio_mobile" value="">
 <script language="javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/cropper_image/dist/cropper.min.js"></script>
 <script language="javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/cropper_image/js/crop-banner.js"></script>
 <script language="javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/cropper_image/js/crop-banner-mobile.js"></script>

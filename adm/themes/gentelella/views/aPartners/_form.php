@@ -110,7 +110,7 @@
     )); ?>
 </div><!-- form -->
 <div class="clearfix">&nbsp;</div>
-<input type="hidden" id="custom_crop_ratio" name="custom_crop_ratio" value="1.1">
+<input type="hidden" id="custom_crop_ratio" name="custom_crop_ratio" value="1.5">
 <script language="javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/cropper_image/dist/cropper.min.js"></script>
 <script language="javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/cropper_image/js/main.js"></script>
 

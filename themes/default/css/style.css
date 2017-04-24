@@ -38,6 +38,14 @@ ul li {
     list-style: none;
 }
 
+hr {
+    margin-top: 0;
+}
+
+b, strong {
+    font-family: "Helvetica Neue Bold";
+}
+
 .line {
     clear: both;
     height: 32px;
@@ -721,7 +729,7 @@ ul.dropdown-inner-list.top_menu_listitem {
 
 .product_list .thumbnail {
     padding: 0;
-    margin-bottom: 0;
+    margin-bottom: 10px;
     border: none;
     height: 170px;
 }
@@ -1010,6 +1018,11 @@ ul.dropdown-inner-list.top_menu_listitem {
     }
 
     /*CSS product*/
+    .product_list {
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+
     .flexslider {
         margin: 0 0 50px;
     }
@@ -1056,6 +1069,10 @@ ul.dropdown-inner-list.top_menu_listitem {
 
     .product_list .thumbnail {
         height: 150px;
+    }
+
+    .product_list .txt_title, .product_list .txt_price {
+        text-indent: 5px;
     }
 
     #banner {

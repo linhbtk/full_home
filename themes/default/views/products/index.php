@@ -1,8 +1,15 @@
 <?php
     /* @var $this ProductsController */
-    /* @var $categories WCategories */
-    /* @var $parent_cate WCategories */
+    /* @var $categories WCategoriesDetail */
+    /* @var $parent_cate WCategoriesDetail */
     /* @var $products WProducts */
+
+    if (isset($parent_cate->name)) {
+        $homeLink = '<img src="' . Yii::app()->theme->baseUrl . '/images/ic_menu_1_1.png" alt=""
+                                                 class="icon"><span class="home_link">' . CHtml::encode($parent_cate->name) . '</span>';
+    } else {
+        $homeLink = '<i class="glyphicon glyphicon-home" style="color: #FFF;margin-right: 10px;"></i><span class="home_link">' . Yii::t('web/full_home', 'homepage') . '</span>';
+    }
 ?>
 <?php $this->renderPartial('//layouts/_social'); ?>
 <div class="br_top hidden-xs">
@@ -11,11 +18,10 @@
             <?php
                 $this->widget('zii.widgets.CBreadcrumbs', array(
                     'links'       => array(
-                        '<span class="link">Hộp đựng bằng nhựa</span>',
+                        '<span class="link">' . CHtml::encode($categories->name) . '</span>',
                     ),
                     'encodeLabel' => FALSE,
-                    'homeLink'    => '<img src="' . Yii::app()->theme->baseUrl . '/images/ic_menu_1_1.png" alt=""
-                                                 class="icon"><span class="home_link">Đồ nhựa thủy tinh</span>',
+                    'homeLink'    => $homeLink,
                     'separator'   => '<img src="' . Yii::app()->theme->baseUrl . '/images/br.png"/>',
                     'htmlOptions' => array('class' => 'breadcrumb'),
                 ));
@@ -25,7 +31,7 @@
 </div>
 <div class="container">
     <?php $this->renderPartial('//layouts/_banner'); ?>
-    <div class="product_list row">
+    <div class="product_list">
         <div class="space_30"></div>
         <div class="title_cate">
             <span class="name_cate"><?= CHtml::encode($categories->name); ?></span>
@@ -38,23 +44,9 @@
             <?php
                 if ($products):
                     foreach ($products as $item):
-                        ?>
-                        <div class="col-md-3 col-xs-6">
-                            <a href="<?= Yii::app()->controller->createUrl('products/detail', array('id' => $item->id)); ?>"
-                               title="">
-                                <div class="thumbnail">
-                                    <img src="<?= Yii::app()->params->upload_dir_path . $item->thumbnail; ?>" alt="">
-                                </div>
-                                <div class="txt_title">
-                                    <?= CHtml::encode($item->name); ?>
-                                </div>
-                                <div class="txt_price">
-                                    <?= number_format($item->price, 0, "", "."); ?>
-                                </div>
-                            </a>
-                        </div>
-                    <?php endforeach; ?>
-                <?php endif; ?>
+                        $this->renderPartial('_block_product', array('item' => $item));
+                    endforeach;
+                endif; ?>
         </div>
         <div class="space_60"></div>
     </div>
