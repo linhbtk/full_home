@@ -7,6 +7,7 @@
 
         public $name;
         public $price;
+        public $categories_id;
 
 
         /**
@@ -37,11 +38,12 @@
             $criteria->distinct = TRUE;
             $criteria->select   = 't.*, pd.name as name, pd.price as price';
             $criteria->join     = 'INNER JOIN tbl_product_detail as pd ON pd.product_id = t.id';
+            $criteria->join .= ' INNER JOIN tbl_product_categories_map pcm on pcm.product_id=t.id';
             if ($product_id) {
-                $criteria->condition = 't.status=:status AND t.id<>:id AND t.categories_id=:categories_id';
+                $criteria->condition = 't.status=:status AND t.id<>:id AND pcm.categories_id=:categories_id';
                 $criteria->params    = array(':status' => self::PRODUCT_ACTIVE, ':id' => $product_id, ':categories_id' => $categories_id);
             } else {
-                $criteria->condition = 't.status=:status AND t.categories_id=:categories_id';
+                $criteria->condition = 't.status=:status AND pcm.categories_id=:categories_id';
                 $criteria->params    = array(':status' => self::PRODUCT_ACTIVE, ':categories_id' => $categories_id);
             }
             $criteria->limit  = $limit;
@@ -65,13 +67,13 @@
         /**
          * @param $id
          *
-         * @return static
+         * @return array|mixed|null
          */
-        public static function getProductDetail($id)
+        public static function getProduct($id)
         {
             $criteria            = new CDbCriteria();
-            $criteria->select    = 't.*, pd.*';
-            $criteria->join      = 'INNER JOIN tbl_product_detail pd on pd.product_id=t.id';
+            $criteria->select    = 't.*, pcm.categories_id as categories_id';
+            $criteria->join      = ' INNER JOIN tbl_product_categories_map pcm on pcm.product_id=t.id';
             $criteria->condition = 't.id =:id';
             $criteria->params    = array(':id' => $id);
 

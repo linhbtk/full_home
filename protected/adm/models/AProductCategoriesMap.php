@@ -1,27 +1,7 @@
 <?php
 
-    /**
-     * This is the model class for table "{{categories}}".
-     *
-     * The followings are the available columns in table '{{categories}}':
-     *
-     * @property string  $id
-     * @property integer $parent_id
-     * @property string  $thumbnail
-     * @property string  $icon
-     * @property integer $sort_order
-     * @property integer $status
-     */
-    class Categories extends CActiveRecord
+    class AProductCategoriesMap extends ProductCategoriesMap
     {
-        /**
-         * @return string the associated database table name
-         */
-        public function tableName()
-        {
-            return '{{categories}}';
-        }
-
         /**
          * @return array validation rules for model attributes.
          */
@@ -30,11 +10,11 @@
             // NOTE: you should only define rules for those attributes that
             // will receive user inputs.
             return array(
-                array('parent_id, sort_order, status', 'numerical', 'integerOnly' => TRUE),
-                array('thumbnail, icon', 'length', 'max' => 255),
+                array('product_id, categories_id', 'required'),
+                array('product_id, categories_id', 'length', 'max' => 11),
                 // The following rule is used by search().
                 // @todo Please remove those attributes that should not be searched.
-                array('id, parent_id, thumbnail, icon, sort_order, status', 'safe', 'on' => 'search'),
+                array('product_id, categories_id', 'safe', 'on' => 'search'),
             );
         }
 
@@ -54,12 +34,8 @@
         public function attributeLabels()
         {
             return array(
-                'id'         => 'ID',
-                'parent_id'  => 'Parent',
-                'thumbnail'  => 'Thumbnail',
-                'icon'       => 'Icon',
-                'sort_order' => 'Sort Order',
-                'status'     => 'Status',
+                'product_id'    => 'Product',
+                'categories_id' => 'Categories',
             );
         }
 
@@ -81,12 +57,8 @@
 
             $criteria = new CDbCriteria;
 
-            $criteria->compare('id', $this->id, TRUE);
-            $criteria->compare('parent_id', $this->parent_id);
-            $criteria->compare('thumbnail', $this->thumbnail, TRUE);
-            $criteria->compare('icon', $this->icon, TRUE);
-            $criteria->compare('sort_order', $this->sort_order);
-            $criteria->compare('status', $this->status);
+            $criteria->compare('product_id', $this->product_id, TRUE);
+            $criteria->compare('categories_id', $this->categories_id, TRUE);
 
             return new CActiveDataProvider($this, array(
                 'criteria' => $criteria,
@@ -99,7 +71,7 @@
          *
          * @param string $className active record class name.
          *
-         * @return Categories the static model class
+         * @return AProductCategoriesMap the static model class
          */
         public static function model($className = __CLASS__)
         {

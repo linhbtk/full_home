@@ -48,6 +48,8 @@
                 'rules'          => array(
 
                     ''                              => 'site/index',
+                    'danh-muc/<id:\d+>'             => 'products/index',
+                    'san-pham/<id:\d+>'             => 'products/detail',
                     '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
                 ),
             ),

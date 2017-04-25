@@ -731,7 +731,7 @@ ul.dropdown-inner-list.top_menu_listitem {
     padding: 0;
     margin-bottom: 10px;
     border: none;
-    height: 170px;
+    height: 200px;
 }
 
 .product_list .thumbnail img {
@@ -742,12 +742,17 @@ ul.dropdown-inner-list.top_menu_listitem {
     color: #545454;
     font-size: 15px;
     text-indent: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 5px 0;
 }
 
 .product_list .txt_price {
     color: #9e0000;
     font-size: 13px;
     text-indent: 15px;
+    padding-bottom: 10px;
 }
 
 .product_list .title_cate {

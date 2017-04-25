@@ -8,25 +8,13 @@
     class AIOTreeFunction
     {
 
-        public static function getTreeArray($preCheckValue = NULL, $categories_type = NULL, $is_char = FALSE)
+        public static function getTreeArray($preCheckValue = NULL)
         {
-            $params    = array();
-            $condition = array();
-
-            if ($categories_type && $is_char == FALSE) {
-                $condition[]     = 'json_extra_params LIKE :type';
-                $keyword         = addcslashes($categories_type, '%_'); // escape LIKE's special characters
-                $params[':type'] = "%$keyword%";
-            }
-
-            $condition[]       = 'parent_id = 0 AND status = :status';
-            $params[':status'] = 1;
-
-
-
             $criteria            = new CDbCriteria();
-            $criteria->condition = implode($condition, ' AND ');
-            $criteria->params    = $params;
+            $criteria->select    = 't.id, cd.name as name';
+            $criteria->join      = 'INNER JOIN tbl_categories_detail cd on cd.categories_id=t.id';
+            $criteria->condition = 't.status=:status AND parent_id=0';
+            $criteria->params    = array(':status' => ACategories::CATEGORY_ACTIVE);
 
             $criteria->order = '`name` asc';
             $operatorObj     = ACategories::model()->findAll($criteria);
@@ -41,23 +29,38 @@
                     'text'     => $value,
                     'checked'  => self::checkedValue($key, $preCheckValue),
                 );
-                $list_goicuoc       = array();
-                $list_goicuoc       = ACategories::model()->findAll("parent_id=" . $key);
-                if (count($list_goicuoc) > 0) {
-                    $list_goicuoc = CHtml::listData($list_goicuoc, 'id', 'name');
-                    foreach ($list_goicuoc as $k => $v) {
-                        $key_sub                = $key . '_' . $k;
-                        $operator_ary[$key_sub] = array(
-                            'parentid' => $key,
-                            'value'    => $key_sub,
-                            'text'     => $v,
-                            'checked'  => self::checkedValue($key_sub, $preCheckValue),
-                        );
-                    }
+
+                self::getArrayChild($preCheckValue, $key, $operator_ary);
+            }
+            return $operator_ary;
+        }
+
+        /**
+         * @param $preCheckValue
+         * @param $parent_id
+         * @param $operator_ary
+         */
+        public static function getArrayChild($preCheckValue, $parent_id, &$operator_ary)
+        {
+            $criteria_sub            = new CDbCriteria();
+            $criteria_sub->select    = 't.id, cd.name as name';
+            $criteria_sub->join      = 'INNER JOIN tbl_categories_detail cd on cd.categories_id=t.id';
+            $criteria_sub->condition = 't.status=:status AND t.parent_id=:parent_id';
+            $criteria_sub->params    = array(':status' => ACategories::CATEGORY_ACTIVE, ':parent_id' => $parent_id);
+            $sub                     = ACategories::model()->findAll($criteria_sub);
+            if (count($sub) > 0) {
+                $sub = CHtml::listData($sub, 'id', 'name');
+                foreach ($sub as $key => $value) {
+                    $key_sub                = $parent_id . '_' . $key;
+                    $operator_ary[$key] = array(
+                        'parentid' => $parent_id,
+                        'value'    => $key_sub,
+                        'text'     => $value,
+                        'checked'  => self::checkedValue($key_sub, $preCheckValue),
+                    );
+                    self::getArrayChild($preCheckValue, $key, $operator_ary);
                 }
             }
-
-            return $operator_ary;
         }
 
         private static function checkedValue($key, $preCheckValue)

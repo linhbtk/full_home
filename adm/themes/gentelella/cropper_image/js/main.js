@@ -206,9 +206,11 @@
             } else {
                 this.$img = $('<img src="' + this.url + '">');
                 this.$avatarWrapper.empty().html(this.$img);
+                this.$img.cropper('getCroppedCanvas', {fillColor: 'transparent'});//set background
                 this.$img.cropper({
                     aspectRatio: custom_crop_ratio,
                     preview: this.$avatarPreview.selector,
+                    autoCropArea: 1,
                     strict: false,
                     crop: function (data) {
                         var json = [

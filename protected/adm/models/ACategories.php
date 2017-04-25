@@ -16,10 +16,18 @@
             // will receive user inputs.
             return array(
                 array('parent_id, sort_order, status', 'numerical', 'integerOnly' => TRUE),
-                array('thumbnail', 'length', 'max' => 255),
+                array('thumbnail, icon', 'length', 'max' => 255),
+                array('icon', 'file', 'on'         => 'insert',
+                                      'allowEmpty' => TRUE,
+                                      'types'      => 'jpg, jpeg, png, gif'
+                ),
+                array('icon', 'file', 'on'         => 'update_file',
+                                      'allowEmpty' => TRUE,
+                                      'types'      => 'jpg, jpeg, png, gif',
+                ),
                 // The following rule is used by search().
                 // @todo Please remove those attributes that should not be searched.
-                array('id, parent_id, thumbnail, sort_order, status', 'safe', 'on' => 'search'),
+                array('id, parent_id, thumbnail, icon, sort_order, status', 'safe', 'on' => 'search'),
             );
         }
 
@@ -42,6 +50,7 @@
                 'id'         => Yii::t('adm/label', 'id'),
                 'parent_id'  => Yii::t('adm/label', 'parent_id'),
                 'thumbnail'  => Yii::t('adm/label', 'thumbnail'),
+                'icon'       => Yii::t('adm/label', 'icon'),
                 'sort_order' => Yii::t('adm/label', 'sort_order'),
                 'status'     => Yii::t('adm/label', 'status'),
                 'name'       => Yii::t('adm/label', 'name'),
@@ -71,6 +80,7 @@
             $criteria->compare('t.id', $this->id, TRUE);
             $criteria->compare('t.parent_id', $this->parent_id, TRUE);
             $criteria->compare('t.thumbnail', $this->thumbnail, TRUE);
+            $criteria->compare('t.icon', $this->icon, TRUE);
             $criteria->compare('t.sort_order', $this->sort_order);
             $criteria->compare('t.status', $this->status);
             $criteria->compare('cd.name', $this->name, TRUE);

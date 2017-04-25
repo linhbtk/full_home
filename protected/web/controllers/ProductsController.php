@@ -26,7 +26,7 @@
         {
             $categories = WCategoriesDetail::getCategoryDetail($id);
             if ($categories) {
-                $this->pageTitle = Yii::t('web/full_home', 'product') . '-' . $categories->name;
+                $this->pageTitle = Yii::t('web/full_home', 'product') . ' - ' . $categories->name;
                 $parent_cate     = WCategoriesDetail::getCategoryDetail($categories->category->parent_id);
                 $products        = WProducts::getProductsInCategory($categories->categories_id);
                 $this->render('index', array(
@@ -46,19 +46,19 @@
          */
         public function actionDetail($id)
         {
-            $this->pageTitle = Yii::t('web/full_home', 'product');
-
-            $product = WProductDetail::getProductDetail($id);
-            if ($product) {
-                $categories       = WCategoriesDetail::getCategoryDetail($product->product->categories_id);
+            $product        = WProducts::getProduct($id);
+            $product_detail = WProductDetail::getProductDetail($id);
+            if ($product && $product_detail) {
+                $this->pageTitle  = Yii::t('web/full_home', 'product') . ' - ' . $product->name;
+                $categories       = WCategoriesDetail::getCategoryDetail($product->categories_id);
                 $parent_cate      = WCategoriesDetail::getCategoryDetail($categories->category->parent_id);
                 $images           = WFiles::getListFileByMediaId($product->id);
-                $related_products = WProducts::getProductsInCategory($product->product->categories_id, $product->id);
+                $related_products = WProducts::getProductsInCategory($product->categories_id, $product->id);
                 if ($this->isMobile) {
                     $this->render('detail_mobile', array(
                         'categories'       => $categories,
                         'parent_cate'      => $parent_cate,
-                        'product'          => $product,
+                        'product_detail'   => $product_detail,
                         'images'           => $images,
                         'related_products' => $related_products,
                     ));
@@ -66,7 +66,7 @@
                     $this->render('detail', array(
                         'categories'       => $categories,
                         'parent_cate'      => $parent_cate,
-                        'product'          => $product,
+                        'product_detail'   => $product_detail,
                         'images'           => $images,
                         'related_products' => $related_products,
                     ));

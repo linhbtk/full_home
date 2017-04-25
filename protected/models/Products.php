@@ -6,7 +6,6 @@
      * The followings are the available columns in table '{{products}}':
      *
      * @property string  $id
-     * @property integer $categories_id
      * @property string  $code
      * @property string  $thumbnail
      * @property integer $sort_order
@@ -35,12 +34,12 @@
             // NOTE: you should only define rules for those attributes that
             // will receive user inputs.
             return array(
-                array('categories_id, sort_order, status, hot', 'numerical', 'integerOnly' => TRUE),
+                array('sort_order, status, hot', 'numerical', 'integerOnly' => TRUE),
                 array('code, thumbnail, sale_off, promotion', 'length', 'max' => 255),
                 array('last_update, extra_info', 'safe'),
                 // The following rule is used by search().
                 // @todo Please remove those attributes that should not be searched.
-                array('id, categories_id, code, thumbnail, sort_order, last_update, status, extra_info, hot, sale_off, promotion', 'safe', 'on' => 'search'),
+                array('id, code, thumbnail, sort_order, last_update, status, extra_info, hot, sale_off, promotion', 'safe', 'on' => 'search'),
             );
         }
 
@@ -61,7 +60,6 @@
         {
             return array(
                 'id'            => 'ID',
-                'categories_id' => 'Categories',
                 'code'          => 'Code',
                 'thumbnail'     => 'Thumbnail',
                 'sort_order'    => 'Sort Order',
@@ -93,7 +91,6 @@
             $criteria = new CDbCriteria;
 
             $criteria->compare('id', $this->id, TRUE);
-            $criteria->compare('categories_id', $this->categories_id);
             $criteria->compare('code', $this->code, TRUE);
             $criteria->compare('thumbnail', $this->thumbnail, TRUE);
             $criteria->compare('sort_order', $this->sort_order);
