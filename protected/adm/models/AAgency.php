@@ -1,7 +1,10 @@
 <?php
 
-    class APartners extends Partners
+    class AAgency extends Agency
     {
+        CONST AGENCY_ACTIVE   = 1;
+        CONST AGENCY_INACTIVE = 0;
+
         public $old_file;
 
         /**
@@ -12,21 +15,14 @@
             // NOTE: you should only define rules for those attributes that
             // will receive user inputs.
             return array(
-                array('status', 'required'),
-                array('sort_order', 'unique'),
+                array('title, address, folder_path, status', 'required'),
                 array('sort_order, status', 'numerical', 'integerOnly' => TRUE),
                 array('title, folder_path', 'length', 'max' => 255),
+                array('phone_number', 'length', 'max' => 255),
                 array('target_link', 'length', 'max' => 1000),
-//                array('folder_path', 'file', 'on'    => 'insert',
-//                                             'types' => 'jpg, jpeg, png, gif'
-//                ),
-//                array('folder_path', 'file', 'on'         => 'update_file',
-//                                             'allowEmpty' => TRUE,
-//                                             'types'      => 'jpg, jpeg, png, gif',
-//                ),
                 // The following rule is used by search().
                 // @todo Please remove those attributes that should not be searched.
-                array('id, title, folder_path, target_link, sort_order, status', 'safe', 'on' => 'search'),
+                array('id, title, address, phone_number, folder_path, target_link, sort_order, status', 'safe', 'on' => 'search'),
             );
         }
 
@@ -46,12 +42,14 @@
         public function attributeLabels()
         {
             return array(
-                'id'          => Yii::t('adm/label', 'id'),
-                'title'       => Yii::t('adm/label', 'title'),
-                'folder_path' => Yii::t('adm/label', 'folder_path'),
-                'target_link' => Yii::t('adm/label', 'target_link'),
-                'sort_order'  => Yii::t('adm/label', 'sort_order'),
-                'status'      => Yii::t('adm/label', 'status'),
+                'id'           => Yii::t('adm/label', 'id'),
+                'title'        => Yii::t('adm/label', 'title'),
+                'address'      => Yii::t('adm/label', 'address'),
+                'phone_number' => Yii::t('adm/label', 'phone_number'),
+                'folder_path'  => Yii::t('adm/label', 'folder_path'),
+                'target_link'  => Yii::t('adm/label', 'target_link'),
+                'sort_order'   => Yii::t('adm/label', 'sort_order'),
+                'status'       => Yii::t('adm/label', 'status'),
             );
         }
 
@@ -75,6 +73,8 @@
 
             $criteria->compare('id', $this->id, TRUE);
             $criteria->compare('title', $this->title, TRUE);
+            $criteria->compare('address', $this->address, TRUE);
+            $criteria->compare('phone_number', $this->phone_number, TRUE);
             $criteria->compare('folder_path', $this->folder_path, TRUE);
             $criteria->compare('target_link', $this->target_link, TRUE);
             $criteria->compare('sort_order', $this->sort_order);
@@ -97,7 +97,7 @@
          *
          * @param string $className active record class name.
          *
-         * @return Partners the static model class
+         * @return AAgency the static model class
          */
         public static function model($className = __CLASS__)
         {
@@ -121,7 +121,7 @@
          */
         public function getImageUrl($images)
         {
-            $dir_root =  Yii::app()->params->upload_dir_path;
+            $dir_root = Yii::app()->params->upload_dir_path;
 
             return CHtml::image($dir_root . $images, $this->title, array("width" => "100px", "height" => "60px", "title" => $this->title));
         }

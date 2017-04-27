@@ -21,6 +21,7 @@
             'application.extensions.*',
             'application.extensions.loadConfigXML.*',
             'web.components.MSISDN_DETECT.*',
+            'ext.YiiMailer.YiiMailer'
         ),
         'language'          => 'vi',
         'params'            => require(dirname(__FILE__) . '/params.php'),
@@ -50,6 +51,9 @@
                     ''                              => 'site/index',
                     'danh-muc/<id:\d+>'             => 'products/index',
                     'san-pham/<id:\d+>'             => 'products/detail',
+                    'tim-kiem/<q:.*>'               => 'products/search',
+                    'phan-phoi'                     => 'site/agency',
+                    'lien-he'                       => 'site/contact',
                     '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
                 ),
             ),

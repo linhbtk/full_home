@@ -60,6 +60,11 @@
                                     'url'     => array('/aPartners'),
                                     'visible' => Yii::app()->user->checkAccess('aPartners.*'),
                                 ),
+                                array(
+                                    'label'   => '<i class="fa fa-shopping-cart" aria-hidden="true"></i> ' . Yii::t('adm/menu', 'menu_agency'),
+                                    'url'     => array('/aAgency'),
+                                    'visible' => Yii::app()->user->checkAccess('aAgency.*'),
+                                ),
                             ),
                         )
                     );

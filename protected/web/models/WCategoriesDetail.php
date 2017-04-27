@@ -35,7 +35,6 @@
         public static function getCategoryDetail($categories_id)
         {
             $criteria            = new CDbCriteria();
-            $criteria->with      = 'category';
             $criteria->condition = 't.categories_id =:categories_id';
             $criteria->params    = array(':categories_id' => $categories_id);
 

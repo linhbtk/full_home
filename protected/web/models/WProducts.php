@@ -32,7 +32,7 @@
          *
          * @return CActiveDataProvider|static[]
          */
-        public static function getProductsInCategory($categories_id, $product_id = '', $dataProvider = FALSE, $limit = 10, $offset = 0)
+        public static function getProductsInCategory($categories_id, $product_id = '', $dataProvider = FALSE, $limit = 8, $offset = 0)
         {
             $criteria           = new CDbCriteria();
             $criteria->distinct = TRUE;
@@ -80,5 +80,71 @@
             $results = self::model()->find($criteria);
 
             return $results;
+        }
+
+        /**
+         * @param $categories_id
+         *
+         * @return array|bool
+         */
+        public static function getProductsOfCategories($categories_id)
+        {
+            $results    = array();
+            $categories = WCategories::getCategoriesByParentId($categories_id);
+            if ($categories) {
+                foreach ($categories as $one) {
+                    $temp['category'] = $one;
+                    $temp['products'] = self::getProductsInCategory($one->id);
+                    if ($temp) {
+                        array_push($results, $temp);
+                    }
+                }
+                if ($results) {
+                    return $results;
+                } else {
+                    return FALSE;
+                }
+            } else {
+                return FALSE;
+            }
+        }
+
+        /**
+         * search product by keyword
+         *
+         * @param $keyword
+         *
+         * @return CActiveDataProvider
+         */
+        public static function searchProductsByKeywords($keyword, $dataProvider = FALSE)
+        {
+            $criteria           = new CDbCriteria;
+            $criteria->distinct = TRUE;
+            $criteria->select   = 't.*, pd.name as name, pd.price as price';
+            $criteria->join     = 'INNER JOIN tbl_product_detail as pd ON pd.product_id = t.id';
+
+            $criteria->addSearchCondition('t.code', $keyword, TRUE, 'OR');
+
+            $criteria->addSearchCondition('pd.name', $keyword, TRUE, 'OR');
+            $criteria->addSearchCondition('pd.unsign_name', $keyword, TRUE, 'OR');
+            $criteria->addSearchCondition('pd.size', $keyword, TRUE, 'OR');
+            $criteria->addSearchCondition('pd.material', $keyword, TRUE, 'OR');
+            $criteria->addSearchCondition('pd.price', $keyword, TRUE, 'OR');
+            $criteria->addSearchCondition('pd.description', $keyword, TRUE, 'OR');
+
+            $criteria->addCondition('t.status = ' . self::PRODUCT_ACTIVE);
+            $criteria->order = 'pd.name DESC, t.id DESC';
+
+            if ($dataProvider) {
+                return new CActiveDataProvider(self::model(), array(
+                    'criteria'   => $criteria,
+                    'sort'       => array('defaultOrder' => 'pd.name DESC, t.id DESC'),
+                    'pagination' => array(
+                        'pageSize' => 1,
+                    )
+                ));
+            } else {
+                return self::model()->findAll($criteria);
+            }
         }
     }

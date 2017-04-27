@@ -13,7 +13,7 @@
     $config = dirname(__FILE__) . '/protected/web/config/main.php';
 
     //error_reporting($GLOBALS['config_common']['debug_mode']['display_errors']);
-    error_reporting(0);
+    error_reporting(E_ALL);
     defined('YII_DEBUG') or define('YII_DEBUG', $GLOBALS['config_common']['debug_mode']['state']);
 
     defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL', 3);

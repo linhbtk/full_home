@@ -31,34 +31,29 @@
 </div>
 <div class="container">
     <?php $this->renderPartial('//layouts/_banner'); ?>
-    <?php if ($products):
-        foreach ($products as $row):
-            ?>
-            <div class="product_list">
-                <div class="space_30"></div>
-                <div class="title_cate">
-                    <span class="name_cate"><?= CHtml::encode($row['category']->name); ?></span>
-                    <a href="<?= Yii::app()->controller->createUrl('products/index', array('id' => $row['category']->id)); ?>"
-                       title="">
-                        <span class="more_cate hidden-xs">
-                            <?= Yii::t('web/full_home', 'other_products') . CHtml::encode($row['category']->name); ?>
-                        </span>
-                    </a>
-                </div>
-                <div class="line_1"></div>
-                <div class="space_30 hidden-xs"></div>
-                <div class="list">
-                    <div class="space_20"></div>
-                    <?php
-                        if ($row['products']):
-                            foreach ($row['products'] as $item):
-                                $this->renderPartial('_block_product', array('data' => $item));
-                            endforeach;
-                        endif;
-                    ?>
-                </div>
-                <div class="space_30"></div>
-            </div>
-        <?php endforeach; ?>
-    <?php endif; ?>
+    <div class="product_list">
+        <div class="space_30"></div>
+        <div class="title_cate">
+            <span class="name_cate"><?= CHtml::encode($categories->name); ?></span>
+        </div>
+        <div class="line_1"></div>
+        <div class="space_30 hidden-xs"></div>
+        <div class="list col-xs-12">
+            <?php
+                if ($products) {
+                    $this->widget(
+                        'booster.widgets.TbThumbnails',
+                        array(
+                            'dataProvider'     => $products,
+                            'template'         => "{items} {pager}",
+                            'enablePagination' => TRUE,
+                            'itemView'         => '_block_product',
+//                            'ajaxType'         => 'POST',
+                            'emptyText'        => Yii::t('web/full_home', 'no_product'),
+                        )
+                    );
+                } ?>
+        </div>
+        <div class="space_60"></div>
+    </div>
 </div>

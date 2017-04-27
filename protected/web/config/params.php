@@ -40,7 +40,11 @@
             'verify_number' => 2,
             'times_reset'   => 3,
         ),
-        //'socket_api_url'      => 'ws://10.2.0.159:20979/api',
-        'socket_api_url'      => 'ws://10.2.0.240:20979/api',
-
+        'sendEmail'   => array(
+            'host'     => 'mail.centech.com.vn',
+            'username' => 'linh.btk@centech.com.vn',
+            'password' => '',
+            'port'     => 465,
+            'type'     => 'ssl',
+        ),
     );

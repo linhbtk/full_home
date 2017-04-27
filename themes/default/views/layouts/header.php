@@ -7,9 +7,13 @@
             </a>
         </div>
         <div class="col-md-6">
-            <form class="navbar-form" role="search">
+            <form class="navbar-form" role="search"
+                  action="<?= Yii::app()->controller->createUrl('products/search', array('q' => '1')); ?>"
+                  method="post">
+                <?php echo CHtml::hiddenField("YII_CSRF_TOKEN", Yii::app()->request->csrfToken); ?>
                 <div class="input-group add-on">
-                    <input class="form-control" placeholder="" name="srch-term" id="srch-term" type="text">
+                    <input class="form-control" placeholder="" name="WProduct[keyword]" id="WProduct_keyword"
+                           type="text">
 
                     <div class="input-group-btn">
                         <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i>

@@ -20,11 +20,11 @@
                        class="parent <?= ($controller == 'products' && ($action == 'index' || $action == 'detail')) ? 'active' : ''; ?>"><?= Yii::t('web/full_home', 'product'); ?></a>
                 </li>
                 <li>
-                    <a href="" title=""
-                       class="parent <?= ($controller == 'site' && $action == 'distribution') ? 'active' : ''; ?>"><?= Yii::t('web/full_home', 'distribution'); ?></a>
+                    <a href="<?= Yii::app()->controller->createUrl('site/agency'); ?>" title=""
+                       class="parent <?= ($controller == 'site' && $action == 'agency') ? 'active' : ''; ?>"><?= Yii::t('web/full_home', 'agency'); ?></a>
                 </li>
                 <li>
-                    <a href="" title=""
+                    <a href="<?= Yii::app()->controller->createUrl('site/contact'); ?>" title=""
                        class="parent <?= ($controller == 'site' && $action == 'contact') ? 'active' : ''; ?>"><?= Yii::t('web/full_home', 'contact'); ?></a>
                 </li>
             </ul>
@@ -40,12 +40,24 @@
                 $index = 1;
                 foreach ($sub_menu_2 as $level_2):
                     $sub_menu_3 = WCategories::getCategoriesByParentId($level_2->id);
+//                    WCategories::getArrayChildParentId($sub_menu_3, $arr_child);
+                    $is_active  = '';
+//                    if ($controller == 'products' && $action == 'index' && isset($_GET['id'])) {
+//                        if (in_array($_GET['id'], $arr_child)) {
+//                            $is_active = 'in';
+//                        }
+//                    }
+                    if ($controller == 'products') {
+                        $root = Yii::app()->params->upload_dir_path;
+                    } else {
+                        $root = Yii::app()->params->upload_dir;
+                    }
                     ?>
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <div class="level-2 pad_15_0">
                                 <a data-toggle="collapse" data-parent="#accordion" href="#menu_<?= $index; ?>">
-                                    <img src="<?= Yii::app()->theme->baseUrl ?>/images/ic_menu_2_<?= $index; ?>.png"
+                                    <img src="<?= $root . $level_2->icon; ?>"
                                          alt=""
                                          class="icon">
                                     <span><?= CHtml::encode($level_2->name); ?></span>
@@ -55,7 +67,7 @@
                                     <?php endif; ?>
                                 </a>
                             </div>
-                            <div id="menu_<?= $index; ?>" class="panel-collapse collapse">
+                            <div id="menu_<?= $index; ?>" class="panel-collapse collapse <?= $is_active; ?>">
                                 <ul class='panel-body'>
                                     <?php
                                         if ($sub_menu_3):

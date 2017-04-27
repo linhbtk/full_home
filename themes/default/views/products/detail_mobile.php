@@ -27,6 +27,7 @@
                 <?= Yii::t('web/full_home', 'product_price') ?>
                 <span class="price_des"><?= CHtml::encode(number_format($product_detail->price, 0, "", ".")); ?>đ</span>
             </div>
+            <div class="space_10"></div>
             <div class="item">
                 <div class="col-md-4 col-xs-4 no_pad">
                     <img src="<?= Yii::app()->theme->baseUrl ?>/images/arrow_2.png"/>
@@ -73,7 +74,7 @@
             <div class="list">
                 <?php
                     foreach ($related_products as $item):
-                        $this->renderPartial('_block_product', array('item' => $item));
+                        $this->renderPartial('_block_product', array('data' => $item));
                     endforeach;
                 ?>
             </div>

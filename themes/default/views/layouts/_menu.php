@@ -23,14 +23,13 @@
                             <?php
                                 $sub_menu_2 = WCategories::getParentCategories();
                                 if ($sub_menu_2):
-                                    $index = 1;
                                     foreach ($sub_menu_2 as $level_2):
                                         ?>
                                         <div class='col-md-3'>
                                             <div class="item">
                                                 <a href="" class="level-2">
                                                     <img
-                                                        src="<?= Yii::app()->theme->baseUrl ?>/images/ic_menu_1_<?= $index; ?>.png"
+                                                        src="<?= Yii::app()->params->upload_dir . $level_2->icon; ?>"
                                                         alt=""
                                                         class="icon">
                                                     <?= CHtml::encode($level_2->name); ?>
@@ -43,7 +42,8 @@
                                                                 $sub_menu_4 = WCategories::getCategoriesByParentId($level_3->id);
                                                                 ?>
                                                                 <li>
-                                                                    <a href="<?= Yii::app()->controller->createUrl('products/index', array('id' => $level_3->id)); ?>" class="font_14 white" title="">
+                                                                    <a href="<?= Yii::app()->controller->createUrl('products/index', array('id' => $level_3->id)); ?>"
+                                                                       class="font_14 white" title="">
                                                                         <?= CHtml::encode($level_3->name); ?>
                                                                         <?php if ($sub_menu_4): ?>
                                                                             <img
@@ -58,7 +58,8 @@
                                                                     foreach ($sub_menu_4 as $level_4):
                                                                         ?>
                                                                         <li>
-                                                                            <a href="<?= Yii::app()->controller->createUrl('products/index', array('id' => $level_4->id)); ?>" class="font_13 gray" title="">
+                                                                            <a href="<?= Yii::app()->controller->createUrl('products/index', array('id' => $level_4->id)); ?>"
+                                                                               class="font_13 gray" title="">
                                                                                 <span class="red mar_left_10">+</span>
                                                                                 <?= CHtml::encode($level_4->name); ?>
                                                                             </a>
@@ -70,19 +71,17 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                        <?php
-                                        $index++;
-                                    endforeach; ?>
+                                    <?php endforeach; ?>
                                 <?php endif; ?>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="" title=""
-                       class="parent <?= ($controller == 'site' && $action == 'distribution') ? 'active' : ''; ?>"><?= Yii::t('web/full_home', 'distribution'); ?></a>
+                    <a href="<?= Yii::app()->controller->createUrl('site/agency'); ?>" title=""
+                       class="parent <?= ($controller == 'site' && $action == 'agency') ? 'active' : ''; ?>"><?= Yii::t('web/full_home', 'agency'); ?></a>
                 </li>
                 <li>
-                    <a href="" title=""
+                    <a href="<?= Yii::app()->controller->createUrl('site/contact'); ?>" title=""
                        class="parent <?= ($controller == 'site' && $action == 'contact') ? 'active' : ''; ?>"><?= Yii::t('web/full_home', 'contact'); ?></a>
                 </li>
             </ul>

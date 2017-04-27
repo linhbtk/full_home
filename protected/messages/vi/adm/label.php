@@ -69,5 +69,11 @@
         'stack_3'                => 'Vị trí 3',
         'partners'               => 'Đối tác',
         'manage_partners'        => 'Quản lý Đối tác',
+        'manage_agency'          => 'Quản lý Đại lý',
+        'agency'                 => 'Đại lý',
+        'address'                => 'Địa chỉ',
+        'phone_number'           => 'Số điện thoại',
+        'alert_success'          => 'Thay đổi thành công',
+        'alert_fail'             => 'Thay đổi thất bại',
     );
 ?>

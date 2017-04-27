@@ -1,3 +1,7 @@
+<?php
+    /* @var $this SiteController */
+    /* @var $partners WPartners */
+?>
 <?php $this->renderPartial('//layouts/_social'); ?>
 <?php $this->renderPartial('//layouts/_slider', array('stacks' => WBanners::STACK_1)); ?>
 <?php $this->renderPartial('//layouts/_slider', array('stacks' => WBanners::STACK_2)); ?>
@@ -15,7 +19,6 @@
     <div class="row text-center">
         <div class="partner">
             <?php
-                $partners = WPartners::getListPartners();
                 if ($partners && is_array($partners)):
                     foreach ($partners as $item):
                         ?>

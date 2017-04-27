@@ -25,12 +25,17 @@
             if ($sub_menu_2):
                 $index = 1;
                 foreach ($sub_menu_2 as $level_2):
+                    if (Yii::app()->controller->id == 'products') {
+                        $root = Yii::app()->params->upload_dir_path;
+                    } else {
+                        $root = Yii::app()->params->upload_dir;
+                    }
                     ?>
                     <li class="">
             <span class="level-1">
                 <div class="space_5"></div>
                 <span><?= CHtml::encode($level_2->name); ?></span>
-                <img src="<?= Yii::app()->theme->baseUrl ?>/images/ic_menu_1_<?= $index; ?>.png" alt="" class="icon">
+                <img src="<?= $root . $level_2->icon; ?>" alt="" class="icon">
                 <div class="space_5"></div>
             </span>
                         <ul>
@@ -75,13 +80,16 @@
             <span class="hotline"><?= Yii::t('web/full_home', 'hotline'); ?></span>
         </li>
         <li>
-            <a href="" title="" class="level-1"><span><?= Yii::t('web/full_home', 'about'); ?></span></a>
+            <a href="#" title=""
+               class="level-1"><span><?= Yii::t('web/full_home', 'about'); ?></span></a>
         </li>
         <li>
-            <a href="" title="" class="level-1"><span><?= Yii::t('web/full_home', 'distribution'); ?></span></a>
+            <a href="<?= Yii::app()->controller->createUrl('site/agency'); ?>" title=""
+               class="level-1"><span><?= Yii::t('web/full_home', 'agency'); ?></span></a>
         </li>
         <li>
-            <a href="" title="" class="level-1"><span><?= Yii::t('web/full_home', 'contact'); ?></span></a>
+            <a href="<?= Yii::app()->controller->createUrl('site/contact'); ?>" title=""
+               class="level-1"><span><?= Yii::t('web/full_home', 'contact'); ?></span></a>
         </li>
     </ul>
 </nav>
@@ -100,9 +108,10 @@
             navbars: [
                 {
                     position: 'top',
-                    content: ['<form class="navbar-form" role="search">' +
+                    content: ['<form class="navbar-form" role="search" method="post" action="<?= Yii::app()->controller->createUrl('products/search', array('q' => '1')); ?>">' +
+                    '<input type="hidden" name="YII_CSRF_TOKEN" id="YII_CSRF_TOKEN" value="<?= Yii::app()->request->csrfToken?>">' +
                     '<div class="input-group">' +
-                    '<input type="text" class="form-control" placeholder="" name="srch-term" id="srch-term" >' +
+                    '<input type="text" class="form-control" placeholder="" name="WProduct[keyword]" id="WProduct_keyword">' +
                     '<div class="input-group-btn" >' +
                     '<button class="btn btn-default" type="submit" > <i class="glyphicon glyphicon-search" > </i></button>' +
                     '</div>' +

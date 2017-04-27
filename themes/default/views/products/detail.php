@@ -98,7 +98,7 @@
             <div class="list">
                 <?php
                     foreach ($related_products as $item):
-                        $this->renderPartial('_block_product', array('item' => $item));
+                        $this->renderPartial('_block_product', array('data' => $item));
                     endforeach;
                 ?>
             </div>
