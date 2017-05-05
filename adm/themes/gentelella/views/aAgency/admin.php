@@ -36,11 +36,13 @@
                     array(
                         'name'        => 'folder_path',
                         'type'        => 'raw',
-                        'value'       => '$data->getImageUrl($data->folder_path)',
+                        'value'       => 'CHtml::link($data->getImageUrl($data->folder_path), array(\'update\', \'id\' => $data->id))',
                         'htmlOptions' => array('width' => '100px'),
                     ),
                     array(
                         'name'        => 'title',
+                        'type'        => 'raw',
+                        'value'       => 'CHtml::link($data->title, array(\'update\', \'id\' => $data->id))',
                         'htmlOptions' => array('style' => 'word-break: break-word;vertical-align:middle;'),
                     ),
                     array(

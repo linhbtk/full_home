@@ -27,7 +27,8 @@
         <div class="col-md-6 col-xs-12 xs_no_pad">
             <p class="uppercase info"><?= Yii::t('web/full_home', 'company_name') ?></p>
 
-            <p class="info"><?= Yii::t('web/full_home', 'address') ?></p>
+            <p class="info"><?= Yii::t('web/full_home', 'address_1') ?></p>
+            <p class="info"><?= Yii::t('web/full_home', 'address_2') ?></p>
 
             <p class="info"><?= Yii::t('web/full_home', 'phone_number') ?></p>
         </div>
@@ -91,35 +92,14 @@
         </div>
     </div>
     <div class="google_map">
-        <div class="mapouter">
-            <div class="gmap_canvas">
-                <iframe width="100%" height="500" id="gmap_canvas"
-                        src="https://maps.google.com/maps?q=Số 16, ngõ 187, Phố Mai Dịch, Phường Mai Dịch, Q. Cầu Giấy, TP. Hà Nội, &t=&z=14&ie=UTF8&iwloc=&output=embed"
-                        frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-                <script src="http://www.embedgooglemap.net/mapscript.js"></script>
-                <br>embed google map by <a href="http://www.embedgooglemap.net">embedgooglemap.net</a></div>
-            <style>.mapouter {
-                    overflow: hidden;
-                    height: 500px;
-                    width: 100%;
-                }
-
-                .gmap_canvas {
-                    background: none !important;
-                    height: 500px;
-                    width: 100%;
-                }
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.759932982798!2d105.73885921493289!3d21.042289585991025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313454f6b0a11265%3A0x2ec5879fa7efbbc!2zQ8O0bmcgdHkgQ-G7lSBwaOG6p24gRnVsbGhvbWU!5e0!3m2!1svi!2s!4v1493949317021" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+            <style>
                 @media only screen and (max-width: 480px) {
-                    .mapouter {
-                        height: 350px;
-                    }
-
-                    .gmap_canvas {
+                    .google_map iframe {
                         height: 350px;
                     }
                 }
             </style>
-        </div>
         <div class="space_30"></div>
     </div>
 </div>

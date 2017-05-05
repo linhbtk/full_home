@@ -17,6 +17,10 @@
                 <h2><?= Yii::t('adm/label', 'view') ?> #<?php echo $model->id; ?></h2>
 
                 <div class="clearfix"></div>
+                <div class="pull-right">
+                    <?php echo CHtml::link(Yii::t('adm/label', 'update'), array('update', 'id' => $model->id), array('class' => 'btn btn-warning')); ?>
+                </div>
+                <div class="clearfix"></div>
             </div>
 
             <div class="x_content">

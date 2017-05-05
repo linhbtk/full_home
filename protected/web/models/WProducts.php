@@ -71,10 +71,11 @@
          */
         public static function getProduct($id)
         {
-            $criteria            = new CDbCriteria();
-            $criteria->select    = 't.*, pcm.categories_id as categories_id';
-            $criteria->join      = ' INNER JOIN tbl_product_categories_map pcm on pcm.product_id=t.id';
-            $criteria->condition = 't.id =:id';
+            $criteria         = new CDbCriteria();
+            $criteria->select = 't.*, pcm.categories_id as categories_id';
+            $criteria->join   = ' INNER JOIN tbl_product_categories_map pcm on pcm.product_id=t.id';
+            $criteria->join .= ' INNER JOIN tbl_categories c on pcm.categories_id=c.id';
+            $criteria->condition = 't.id =:id AND c.parent_id != 0';
             $criteria->params    = array(':id' => $id);
 
             $results = self::model()->find($criteria);

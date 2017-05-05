@@ -291,7 +291,8 @@
             if (!is_dir($upload_dir)) {
                 mkdir($upload_dir, 0777, TRUE);
             }
-            $max_upload_size   = 999 * 1024 * 1024;//999Mb
+
+            $max_upload_size   = 300 * 1024;//300Kb
             $accept_file_types = 'jpg|jpeg|png|gif';
             $options_arr       = array(
                 'script_url'        => Yii::app()->createUrl('aFiles/deleteFile'),

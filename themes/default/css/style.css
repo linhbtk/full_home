@@ -135,6 +135,10 @@ b, strong {
     font-size: 13px;
 }
 
+.font_16 {
+    font-size: 16px;
+}
+
 .white {
     color: #FFF;
 }
@@ -658,7 +662,7 @@ ul.dropdown-inner-list.top_menu_listitem {
     background-color: #252525;
     color: #929292;
     font-weight: 600;
-    height: 110px;
+    height: 150px;
     width: 100%;
     padding: 25px 0;
 }
@@ -674,11 +678,13 @@ ul.dropdown-inner-list.top_menu_listitem {
 
 #footer .txt_info {
     float: left;
-    width: 215px;
+    line-height: 25px;
+    width: 85%;
+    text-align: justify;
 }
 
 #footer .item {
-    padding: 0 70px;
+    /*padding: 0 70px;*/
 }
 
 /*End CSS footer*/
@@ -789,6 +795,11 @@ ul.dropdown-inner-list.top_menu_listitem {
     border-left: 2px solid #c6c6c6;
     margin-left: 70px;
     padding: 0 5px;
+}
+
+.flexslider .slides img {
+    max-height: 470px;
+    max-width: 470px;
 }
 
 /*End CSS Product */
@@ -1169,6 +1180,11 @@ ul.dropdown-inner-list.top_menu_listitem {
     #banner {
         margin-left: -15px;
         margin-right: -15px;
+    }
+
+    .flexslider .slides img {
+        max-height: 320px;
+        max-width: 320px;
     }
 
     /*End CSS product*/
