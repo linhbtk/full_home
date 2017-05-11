@@ -12,7 +12,7 @@
                        class="parent <?= ($controller == 'site' && $action == 'index') ? 'active' : ''; ?>"><?= Yii::t('web/full_home', 'homepage'); ?></a>
                 </li>
                 <li>
-                    <a href="#" title=""
+                    <a href="<?= Yii::app()->controller->createUrl('site/about'); ?>" title=""
                        class="parent <?= ($controller == 'site' && $action == 'about') ? 'active' : ''; ?>"><?= Yii::t('web/full_home', 'about'); ?></a>
                 </li>
                 <li class="">
@@ -21,6 +21,11 @@
                     <ul>
                         <li class="sub_menu">
                             <?php
+                                if ($controller == 'products') {
+                                    $root = Yii::app()->params->upload_dir_path;
+                                } else {
+                                    $root = Yii::app()->params->upload_dir;
+                                }
                                 $sub_menu_2 = WCategories::getParentCategories();
                                 if ($sub_menu_2):
                                     foreach ($sub_menu_2 as $level_2):
@@ -29,7 +34,7 @@
                                             <div class="item">
                                                 <a href="" class="level-2">
                                                     <img
-                                                        src="<?= Yii::app()->params->upload_dir . $level_2->icon; ?>"
+                                                        src="<?= $root . $level_2->icon; ?>"
                                                         alt=""
                                                         class="icon">
                                                     <?= CHtml::encode($level_2->name); ?>

@@ -292,7 +292,8 @@
                 mkdir($upload_dir, 0777, TRUE);
             }
 
-            $max_upload_size   = 300 * 1024;//300Kb
+//            $max_upload_size   = 300 * 1024;//300Kb
+            $max_upload_size   = 999 * 1024 * 1024;//300Kb
             $accept_file_types = 'jpg|jpeg|png|gif';
             $options_arr       = array(
                 'script_url'        => Yii::app()->createUrl('aFiles/deleteFile'),
@@ -303,4 +304,36 @@
             );
             $upload_handler    = new UploadHandler($options_arr);
         }
+
+        /**
+         * @throws CDbException
+         * @throws CHttpException
+         */
+        public function actionChangeExtraInfo()
+        {
+            $id     = Yii::app()->getRequest()->getParam('id');
+            $value  = Yii::app()->getRequest()->getParam('value');
+            $model  = $this->loadModel($id);
+            $result = array(
+                'msg'    => '',
+                'status' => FALSE
+            );
+            if ($model) {
+                $model->extra_info = $value;
+                if ($model->update()) {
+                    $result = array(
+                        'msg'    => Yii::t('adm/label', 'alert_success'),
+                        'status' => TRUE
+                    );
+                } else {
+                    $result = array(
+                        'msg'    => Yii::t('adm/label', 'alert_fail'),
+                        'status' => FALSE
+                    );
+                }
+            }
+            echo CJSON::encode($result);
+            exit();
+        }
+
     }

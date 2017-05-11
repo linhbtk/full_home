@@ -63,6 +63,7 @@
                 $categories       = WCategoriesDetail::getCategoryDetail($product->categories_id);
                 $parent_cate      = WCategoriesDetail::getCategoryDetail($categories->category->parent_id);
                 $images           = WFiles::getListFileByMediaId($product->id);
+                $images_content   = WFiles::getListFileByMediaId($product->id, WFiles::TYPE_CONTENT);
                 $related_products = WProducts::getProductsInCategory($product->categories_id, $product->id);
                 if ($this->isMobile) {
                     $this->render('detail_mobile', array(
@@ -70,6 +71,7 @@
                         'parent_cate'      => $parent_cate,
                         'product_detail'   => $product_detail,
                         'images'           => $images,
+                        'images_content'   => $images_content,
                         'related_products' => $related_products,
                     ));
                 } else {
@@ -78,6 +80,7 @@
                         'parent_cate'      => $parent_cate,
                         'product_detail'   => $product_detail,
                         'images'           => $images,
+                        'images_content'   => $images_content,
                         'related_products' => $related_products,
                     ));
                 }

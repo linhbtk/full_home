@@ -11,7 +11,7 @@
     }
 ?>
 <?php $this->widget('booster.widgets.TbAlert'); ?>
-<?php $this->renderPartial('//layouts/_menu_left'); ?>
+<?php $this->renderPartial('//layouts/_menu'); ?>
 <div class="detail_page">
     <?php echo $content; ?>
 </div>

@@ -4,6 +4,8 @@
     {
         const FILES_ACTIVE   = 1;
         const FILES_INACTIVE = 0;
+        const TYPE_CONTENT   = 'content';
+        const TYPE_SLIDER    = 'slider';
 
         /**
          * @return array validation rules for model attributes.
@@ -54,7 +56,7 @@
                 'sort_order'   => 'Sort Order',
                 'part_number'  => 'Part Number',
                 'upload_time'  => 'Upload Time',
-                'extra_info'   => 'Extra Info',
+                'extra_info'   => 'Type Content',
                 'subtitle'     => 'Subtitle',
                 'status'       => 'Status',
             );
@@ -146,5 +148,16 @@
             $dir_root = Yii::app()->params->upload_dir_path;
 
             return CHtml::image($dir_root . $this->folder_path, '', array("width" => "60", "height" => "60"));
+        }
+
+        /**
+         * @return array
+         */
+        public function getAllTypeContent()
+        {
+            return array(
+                self::TYPE_CONTENT => Yii::t('adm/label', 'type_content'),
+                self::TYPE_SLIDER  => Yii::t('adm/label', 'type_slider'),
+            );
         }
     }

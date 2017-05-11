@@ -54,6 +54,7 @@
                     'tim-kiem/<q:.*>'               => 'products/search',
                     'phan-phoi'                     => 'site/agency',
                     'lien-he'                       => 'site/contact',
+                    'gioi-thieu'                    => 'site/about',
                     '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
                 ),
             ),

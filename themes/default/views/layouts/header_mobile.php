@@ -33,7 +33,9 @@
                     ?>
                     <li class="">
             <span class="level-1">
-                <div class="space_5"></div>
+                <?php if ($index != 1): ?>
+                    <div class="space_5"></div>
+                <?php endif; ?>
                 <span><?= CHtml::encode($level_2->name); ?></span>
                 <img src="<?= $root . $level_2->icon; ?>" alt="" class="icon">
                 <div class="space_5"></div>
@@ -80,7 +82,7 @@
             <span class="hotline"><?= Yii::t('web/full_home', 'hotline'); ?></span>
         </li>
         <li>
-            <a href="#" title=""
+            <a href="<?= Yii::app()->controller->createUrl('site/about'); ?>" title=""
                class="level-1"><span><?= Yii::t('web/full_home', 'about'); ?></span></a>
         </li>
         <li>

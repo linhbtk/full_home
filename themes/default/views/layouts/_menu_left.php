@@ -12,7 +12,7 @@
                        class="parent <?= ($controller == 'site' && $action == 'index') ? 'active' : ''; ?>"><?= Yii::t('web/full_home', 'homepage'); ?></a>
                 </li>
                 <li>
-                    <a href="#" title=""
+                    <a href="<?= Yii::app()->controller->createUrl('site/about'); ?>" title=""
                        class="parent <?= ($controller == 'site' && $action == 'about') ? 'active' : ''; ?>"><?= Yii::t('web/full_home', 'about'); ?></a>
                 </li>
                 <li class="">

@@ -88,6 +88,16 @@
             </div>
         </div>
     </div>
+    <div class="col-md-12 text-center images_content">
+        <div class="space_10"></div>
+        <?php
+            if ($images_content):
+                foreach ($images_content as $image):?>
+                    <img src="<?= Yii::app()->params->upload_dir_path . $image->folder_path; ?>"/>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        <div class="space_10"></div>
+    </div>
     <?php if ($related_products): ?>
         <div class="product_list">
             <div class="space_30"></div>

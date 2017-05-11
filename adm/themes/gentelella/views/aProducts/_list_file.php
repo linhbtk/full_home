@@ -4,7 +4,7 @@
     /* @var $modelFiles AFiles */
 ?>
 <?php $this->widget('booster.widgets.TbGridView', array(
-    'id'              => 'products-grid',
+    'id'              => 'files-grid',
     'type'            => 'bordered condensed striped',
     'afterAjaxUpdate' => 'reinstallDatePicker',
     'dataProvider'    => $modelFiles->search($model->id),
@@ -44,6 +44,20 @@
                 'inputclass' => 'span3'
             ),
             'htmlOptions' => array('style' => 'text-align: center;vertical-align: middle;'),
+        ),
+        array(
+            'name'        => 'extra_info',
+            'type'        => 'raw',
+            'value'       => function ($data) {
+                return CHtml::activeDropDownList($data, 'extra_info',
+                    $data->getAllTypeContent(),
+                    array('class'    => 'form-control',
+                          'prompt' => Yii::t('adm/label','select_type_content'),
+                          'onChange' => "js:changeExtraInfo($data->id,this.value)",
+                    )
+                );
+            },
+            'htmlOptions' => array('width' => '130px', 'style' => 'text-align: center;vertical-align:middle;'),
         ),
         array(
             'name'        => 'upload_time',
@@ -102,3 +116,24 @@
         }
     ");
 ?>
+<script language="javascript">
+    function changeExtraInfo(id, value) {
+        bootbox.confirm("<?=Yii::t('adm/label', 'confirm_change_extra_info')?>", function (confirmed) {
+            if (confirmed == true) {
+                $.ajax({
+                    type: "POST",
+                    url: '<?=Yii::app()->controller->createUrl('aFiles/changeExtraInfo')?>',
+                    crossDomain: true,
+                    dataType: 'json',
+                    data: {id: id, value: value, YII_CSRF_TOKEN: '<?= Yii::app()->request->csrfToken ?>'},
+                    success: function (result) {
+                        $.fn.yiiGridView.update('files-grid');
+                        bootbox.alert(result.msg);
+                    }
+                });
+            } else {
+                $.fn.yiiGridView.update('files-grid');
+            }
+        });
+    }
+</script>

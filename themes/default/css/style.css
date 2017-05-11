@@ -159,6 +159,11 @@ b, strong {
     min-height: 400px;
 }
 
+#header .logo {
+    width: 210px;
+    height: 55px;
+}
+
 #main_menu .top-nav {
     background-color: #070841;
 }
@@ -802,6 +807,11 @@ ul.dropdown-inner-list.top_menu_listitem {
     max-width: 470px;
 }
 
+.images_content img {
+    max-width: 100%;
+    height: auto;
+}
+
 /*End CSS Product */
 /*CSS Agency */
 .agency {
@@ -873,7 +883,14 @@ ul.dropdown-inner-list.top_menu_listitem {
 }
 
 /*End CSS Contact */
+/*CSS About*/
+.about {
+    background-color: #FFF;
+    padding: 40px 20px;
+    text-align: justify;
+}
 
+/*End CSS About*/
 /* Large Devices, Wide Screens */
 @media only screen and (max-width: 1920px) and (min-width: 1370px) {
 }
@@ -899,6 +916,7 @@ ul.dropdown-inner-list.top_menu_listitem {
     #header .logo {
         margin-left: 20px;
         width: 110px;
+        height: auto;
     }
 
     #header a.bt_menu_right {
@@ -908,6 +926,10 @@ ul.dropdown-inner-list.top_menu_listitem {
     /*CSS menu*/
     .mm-menu {
         background: #252525;
+    }
+
+    .mm-listview > li > a, .mm-listview > li > span {
+        padding: 18px 10px 10px 20px;
     }
 
     #menu_left .navbar-form {
@@ -993,7 +1015,7 @@ ul.dropdown-inner-list.top_menu_listitem {
         -webkit-transform: rotate(135deg);
         -ms-transform: rotate(135deg);
         transform: rotate(135deg);
-        left: -215px;
+        left: -260px;
         content: '';
         border-color: #d0d0d0;
         display: block;
@@ -1040,6 +1062,7 @@ ul.dropdown-inner-list.top_menu_listitem {
         font-family: "Helvetica Neue";
         font-size: 16px;
         text-indent: 20px;
+        padding: 15px 20px;
     }
 
     .mm-navbar {
@@ -1215,8 +1238,39 @@ ul.dropdown-inner-list.top_menu_listitem {
     .google_map {
         margin: 0 -15px;
     }
+
+    .about {
+        padding: 20px 0;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .mm-menu .mm-listview > li .mm-next:after {
+        -webkit-transform: rotate(135deg);
+        -ms-transform: rotate(135deg);
+        transform: rotate(135deg);
+        left: -215px;
+        content: '';
+        border-color: #d0d0d0;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+    }
 }
 
 /* Custom, iPhone Retina */
 @media only screen and (max-width: 320px) {
+    .mm-menu .mm-listview > li .mm-next:after {
+        -webkit-transform: rotate(135deg);
+        -ms-transform: rotate(135deg);
+        transform: rotate(135deg);
+        left: -185px;
+        content: '';
+        border-color: #d0d0d0;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+    }
 }

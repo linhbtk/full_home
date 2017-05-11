@@ -69,6 +69,10 @@
          */
         public function actionAbout()
         {
+            $this->layout = '/layouts/content_2';
+            if ($this->isMobile) {
+                $this->layout = '/layouts/main_mobile';
+            }
             $this->pageTitle = Yii::t('web/full_home', 'about');
 
             $this->render('about');
@@ -89,7 +93,6 @@
             $this->render('agency', array(
                 'agency' => $agency
             ));
-
         }
 
         /**
