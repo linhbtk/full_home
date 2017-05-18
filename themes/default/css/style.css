@@ -803,13 +803,26 @@ ul.dropdown-inner-list.top_menu_listitem {
 }
 
 .flexslider .slides img {
-    max-height: 470px;
-    max-width: 470px;
+    height: 470px;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .images_content img {
     max-width: 100%;
     height: auto;
+}
+
+#detailImg .flex-control-thumbs li:first-child {
+    width: 68px;
+}
+
+#detailImg .flex-control-thumbs li img {
+    height: 68px;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /*End CSS Product */

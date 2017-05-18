@@ -38,7 +38,7 @@
                             'filter'      => FALSE,
                             'type'        => 'raw',
                             'value'       => 'CHtml::link($data->imageUrl, array(\'update\', \'id\' => $data->id))',
-                            'htmlOptions' => array('nowrap' => 'nowrap', 'width' => '60px'),
+                            'htmlOptions' => array('nowrap' => 'nowrap', 'style' => 'text-align:center;'),
                         ),
                         array(
                             'name'        => 'name',
