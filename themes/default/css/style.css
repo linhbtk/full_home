@@ -814,7 +814,7 @@ ul.dropdown-inner-list.top_menu_listitem {
     height: auto;
 }
 
-#detailImg .flex-control-thumbs li:first-child {
+#detailImg .flex-control-thumbs li:first-child, #detailImg .flex-control-thumbs li {
     width: 68px;
 }
 
