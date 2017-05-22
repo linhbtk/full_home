@@ -9,7 +9,7 @@
 </div>
 <div class="form">
     <?php $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
-        'id'                   => 'abook-files-form',
+        'id'                   => 'thumb_form',
         'action'               => Yii::app()->controller->createUrl('/aProducts/images', array('media_id' => $model->id)),
         // Please note: When you enable ajax validation, make sure the corresponding
         // controller action is handling ajax validation correctly.
@@ -26,7 +26,7 @@
                 <button aria-label="Close" data-dismiss="alert" class="close" type="button">
                     <span aria-hidden="true">×</span>
                 </button>
-                <div id="upload-message"></div>
+                <div id="upload-message_thumb"></div>
             </div>
 
             <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/jquery.fileupload.css">
@@ -37,7 +37,7 @@
                 <i class="glyphicon glyphicon-plus"></i>
                 <span>Select file...</span>
                 <!-- The file input field used as target for the file upload widget -->
-                <input id="fileupload" type="file" name="files"/>
+                <input id="fileupload_thumb" type="file" name="files"/>
                 <!--        <input id="fileupload" type="file" name="files[]" multiple>-->
             </span>
             <br/>
@@ -48,7 +48,7 @@
             </div>
             <!-- The container for the uploaded files -->
             <div class="clearfix"></div>
-            <div id="files" class="files"></div>
+            <div id="files_thumb" class="files"></div>
             <input type="hidden" name="tempFileName" value=""/>
         </div>
         <div class="clearfix"></div>
@@ -77,20 +77,20 @@
         'use strict';
         // Change this to the location of your server-side upload handler:
         var url = '<?php echo Yii::app()->controller->createUrl('aProducts/upload/', array('qqfile' => '1'))?>';
-        $('#fileupload').fileupload({
+        $('#fileupload_thumb').fileupload({
             url: url,
             dataType: 'json',
             done: function (e, data) {
                 $.each(data.result.files, function (index, file) {
                     if (typeof file.error !== "undefined") {
                         $('#progress .progress-bar').css('width', '0');
-                        $('#upload-message').text(file.error);
+                        $('#upload-message_thumb').text(file.error);
                         $(".alert-danger").show();
                     } else {
 //                            $('<p/>').text(file.name).appendTo('#files');
 
                         $(".alert-danger").hide();
-                        $('#files').html(file.name + '&nbsp;&nbsp;&nbsp;<strong style="color:rgba(243, 156, 18, 0.88);"><i class="fa fa-check"></i>  OK</strong>');
+                        $('#files_thumb').html(file.name + '&nbsp;&nbsp;&nbsp;<strong style="color:rgba(243, 156, 18, 0.88);"><i class="fa fa-check"></i>  OK</strong>');
                         $('input[name=tempFileName]').val(file.name);
                     }
                 });
