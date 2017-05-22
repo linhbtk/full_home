@@ -52,7 +52,7 @@
                 return CHtml::activeDropDownList($data, 'extra_info',
                     $data->getAllTypeContent(),
                     array('class'    => 'form-control',
-                          'prompt' => Yii::t('adm/label','select_type_content'),
+                          'prompt'   => Yii::t('adm/label', 'select_type_content'),
                           'onChange' => "js:changeExtraInfo($data->id,this.value)",
                     )
                 );
@@ -89,12 +89,12 @@
                 //Check File Exist
                 $file_path = Yii::app()->params->upload_dir_path . $data->folder_path;
                 if (is_file($file_path) && file_exists($file_path)) {
-                    return CHtml::image(Yii::app()->theme->baseUrl . '/images/icons/tick.png');
+                    return '<i class="fa fa-check-circle"></i>';
                 } else {
-                    return CHtml::image(Yii::app()->theme->baseUrl . '/images/icons/publish_x.png');
+                    return '<i class="fa fa-times-circle"></i>';
                 }
             },
-            'htmlOptions' => array('style' => 'width:130px;vertical-align:middle;text-align:center;')
+            'htmlOptions' => array('style' => 'width:80px;vertical-align:middle;text-align:center;')
         ),
         array(
             'header'      => Yii::t('adm/label', 'delete'),

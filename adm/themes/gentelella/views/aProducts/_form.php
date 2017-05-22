@@ -17,7 +17,7 @@
         $cate_tree       = AIOTreeFunction::getTreeArray($model->categories_id);
         $tab_class       = 'disabled';
         $data_tab_toggle = '';
-    }else{
+    } else {
         $continue = Yii::app()->request->getParam('continue');
         if (isset($continue) && $continue) {
             $tab1         = '';
@@ -145,6 +145,49 @@
                         </div>
                     </div>
                     <div class="col-md-4 col-xs-12">
+                        <div class="form-group">
+                            <?php $box = $this->beginWidget(
+                                'booster.widgets.TbPanel',
+                                array(
+                                    'title'       => Yii::t('adm/label', 'select_category'),
+                                    'headerIcon'  => 'th-list',
+                                    'padContent'  => FALSE,
+                                    'htmlOptions' => array('class' => 'bootstrap-widget-table')
+                                )
+                            ); ?>
+                            <div style="padding:10px;">
+                                <?php
+                                    $this->Widget('ext.AIOTree.AIOTree2', array(
+                                        'model'          => $model,
+                                        'attribute'      => 'categories_id',
+                                        'data'           => $cate_tree,
+                                        'type'           => 'checkbox',
+                                        'parentShow'     => TRUE,
+                                        'parentTag'      => 'div',
+                                        'parentId'       => 'aiotree_id',
+                                        'header'         => '',
+                                        'checkAllText'   => Yii::t('adm/actions', 'check_all'),
+                                        'selectParent'   => TRUE,
+                                        'controlShow'    => FALSE,
+                                        'controlDivider' => ' | ',
+                                        'controlTag'     => 'div',
+                                        'controlClass'   => 'expand_collapse',
+                                        'controlId'      => 'CId',
+                                        'controlLabel'   => array(
+                                            'expand'   => '',
+                                            'collapse' => '',
+                                        ),
+                                    ));
+                                ?>
+                            </div>
+                            <?php $this->endWidget(); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane fade <?= $tab2_content; ?>" id="tab_content2">
+                <div class="row">
+                    <div class="col-md-3 col-xs-12">
                         <!-- Cropping Preview -->
                         <div class="thumbnail_area">
                             <div class="">
@@ -168,57 +211,16 @@
                                                 $thumb_url = '../uploads/upload-icon.jpg';
                                             }
 
-                                            echo $thumb_url != '' ? CHtml::image($thumb_url, '', array('width' => '40%')) : ''; ?>
+                                            echo $thumb_url != '' ? CHtml::image($thumb_url, '', array('data-toggle' => 'modal', 'data-target' => '.img_thumbnail', 'width' => '40%')) : ''; ?>
                                         <?php echo $form->hiddenField($model, 'thumbnail', array('id' => 'thumbnail_hidden')) ?>
                                     </div>
                                 </div>
                                 <?php $this->endWidget(); ?>
                             </div>
                         </div>
-                        <!-- End Cropping Preview -->
-                        <div class="form-group">
-                            <?php $box = $this->beginWidget(
-                                'booster.widgets.TbPanel',
-                                array(
-                                    'title'       => Yii::t('adm/label', 'select_category'),
-                                    'headerIcon'  => 'th-list',
-                                    'padContent'  => false,
-                                    'htmlOptions' => array('class' => 'bootstrap-widget-table')
-                                )
-                            ); ?>
-                            <div style="padding:10px;">
-                                <?php
-                                    $this->Widget('ext.AIOTree.AIOTree2', array(
-                                        'model'          => $model,
-                                        'attribute'      => 'categories_id',
-                                        'data'           => $cate_tree,
-                                        'type'           => 'checkbox',
-                                        'parentShow'     => true,
-                                        'parentTag'      => 'div',
-                                        'parentId'       => 'aiotree_id',
-                                        'header'         => '',
-                                        'checkAllText'   => Yii::t('adm/actions', 'check_all'),
-                                        'selectParent'   => true,
-                                        'controlShow'    => false,
-                                        'controlDivider' => ' | ',
-                                        'controlTag'     => 'div',
-                                        'controlClass'   => 'expand_collapse',
-                                        'controlId'      => 'CId',
-                                        'controlLabel'   => array(
-                                            'expand'   => '',
-                                            'collapse' => '',
-                                        ),
-                                    ));
-                                ?>
-                            </div>
-                            <?php $this->endWidget(); ?>
-                        </div>
                     </div>
-                </div>
-            </div>
-            <div role="tabpanel" class="tab-pane fade <?= $tab2_content; ?>" id="tab_content2">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
+                    <!-- End Cropping Preview -->
+                    <div class="col-md-9 col-sm-9 col-xs-12">
                         <?php if (Yii::app()->user->hasFlash('error')): ?>
                             <div role="alert" class="alert alert-danger alert-dismissible fade in">
                                 <button aria-label="Close" data-dismiss="alert" class="close"
@@ -255,13 +257,9 @@
     <?php $this->endWidget(); ?><!--end form-->
 
     <!-- Cropping modal -->
-    <?php $this->renderPartial('/layouts/_crop_image_form', array(
-        'model'      => $model,
-        'dir_upload' => 'products',
-    ));
-    ?>
+    <?php $this->renderPartial('_modal_thumbnail', array('model' => $model, 'modelDetail' => $modelDetail, 'modelFiles' => $modelFiles)) ?>
     <!-- Cropping modal -->
-    <!-- add Video file modal -->
+    <!-- add file modal -->
     <?php $this->renderPartial('_form_files', array('model' => $model, 'modelDetail' => $modelDetail, 'modelFiles' => $modelFiles)) ?>
 
 </div><!-- form -->

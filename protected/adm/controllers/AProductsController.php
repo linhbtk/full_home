@@ -6,8 +6,9 @@
          * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
          * using two-column layout. See 'protected/views/layouts/column2.php'.
          */
-        public $layout        = '//layouts/column1';
-        public $defaultAction = 'admin';
+        public  $layout        = '//layouts/column1';
+        public  $defaultAction = 'admin';
+        private $dir_upload    = 'products';
 
         /**
          * @return array action filters
@@ -150,7 +151,7 @@
             }
             //Get Selected Cate
             $arr_cate_selected = $model->convertSelectedCate($model->product_map);
-            $cate_tree = AIOTreeFunction::getTreeArray($arr_cate_selected);
+            $cate_tree         = AIOTreeFunction::getTreeArray($arr_cate_selected);
 
             $this->render('update', array(
                 'model'       => $model,
@@ -299,5 +300,96 @@
             }
             echo CJSON::encode($result);
             exit();
+        }
+
+        /**
+         * @param $media_id
+         */
+        public function actionImages($media_id)
+        {
+            if (!$media_id) {
+                $this->redirect(array('aProducts/admin'));
+            }
+
+            $model = $this->loadModel($media_id);
+
+            // Uncomment the following line if AJAX validation is needed
+            // $this->performAjaxValidation($model);
+
+            if (isset($_POST['AProducts'])) {
+                // file temporary
+                $fileTemporary = $_POST['tempFileName'];
+                if (!isset($_POST['tempFileName']) || $_POST['tempFileName'] == '') {
+                    Yii::app()->user->setFlash('error', 'Hãy chọn file để upload.');
+                    $this->redirect(array('aProducts/update', 'id' => $media_id, 'continue' => TRUE));
+                }
+
+                // temporary folder
+                $temporaryFolder = '../uploads/products/temp/';
+                if (!file_exists($temporaryFolder)) {
+                    mkdir($temporaryFolder, 0777, TRUE);
+                }
+                // get upload file info
+                $fileUploadInfo = pathinfo($fileTemporary);
+
+
+                $fileUploadNewName = $fileUploadInfo['filename'] . '-' . time();
+
+                // init folder contain file for this book
+                $destinationFolder = '../uploads/products/' . $media_id . '/';
+
+                // check and create folder;
+                if (!file_exists($destinationFolder)) {
+                    mkdir($destinationFolder, 0777, TRUE);
+                    mkdir($destinationFolder . 'images/', 0777, TRUE);
+                }
+
+                // folder destination
+                $destinationFolder .= 'images/';
+
+                // copy temporary file to book file folder and delete in temporary folder
+                copy($temporaryFolder . $fileTemporary, $destinationFolder . $fileUploadNewName . '.' . $fileUploadInfo['extension']);
+                unlink($temporaryFolder . $fileTemporary);
+
+                //save model
+                $model->thumbnail = str_replace('../uploads/', '', $destinationFolder) . $fileUploadNewName . '.' . $fileUploadInfo['extension'];
+
+                if ($model->save()) {
+                    $this->redirect(array('aProducts/update', 'id' => $media_id, 'continue' => TRUE));
+                } else {
+                    echo 'some error';
+                }
+            }
+        }
+
+        /**
+         * Receive book file, upload via ajax
+         *
+         * @throws CException if uploading is failure
+         */
+        public function actionUpload()
+        {
+            Yii::import('ext.UploadHandler.UploadHandler');
+
+            $dir_root = dirname(Yii::app()->request->scriptFile);
+            $dir_root = str_replace('adm', '', $dir_root);
+            $DS       = DIRECTORY_SEPARATOR;
+
+            $upload_dir = $dir_root . $DS . 'uploads' . $DS . $this->dir_upload . $DS . 'temp' . $DS;
+            if (!is_dir($upload_dir)) {
+                mkdir($upload_dir, 0777, TRUE);
+            }
+
+//            $max_upload_size   = 300 * 1024;//300Kb
+            $max_upload_size   = 999 * 1024 * 1024;//300Kb
+            $accept_file_types = 'jpg|jpeg|png|gif';
+            $options_arr       = array(
+                'script_url'        => Yii::app()->createUrl('aFiles/deleteFile'),
+                'upload_dir'        => $upload_dir,
+                'upload_url'        => $dir_root . $DS . 'uploads' . $DS . $this->dir_upload . $DS . 'temp' . $DS,
+                'max_file_size'     => $max_upload_size,
+                'accept_file_types' => '/\.(' . $accept_file_types . ')$/i',
+            );
+            $upload_handler    = new UploadHandler($options_arr);
         }
     }

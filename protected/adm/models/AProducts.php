@@ -18,7 +18,7 @@
             // NOTE: you should only define rules for those attributes that
             // will receive user inputs.
             return array(
-                array('code, thumbnail, status', 'required'),
+                array('code, status', 'required'),
                 array('sort_order, status, hot', 'numerical', 'integerOnly' => TRUE),
                 array('code, thumbnail, sale_off, promotion', 'length', 'max' => 255),
                 array('last_update, extra_info', 'safe'),
