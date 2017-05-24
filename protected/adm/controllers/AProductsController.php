@@ -381,10 +381,10 @@
             }
 
 //            $max_upload_size   = 300 * 1024;//300Kb
-            $max_upload_size   = 999 * 1024 * 1024;//300Kb
+            $max_upload_size   = 999 * 1024 * 1024;
             $accept_file_types = 'jpg|jpeg|png|gif';
             $options_arr       = array(
-                'script_url'        => Yii::app()->createUrl('aFiles/deleteFile'),
+                'script_url'        => Yii::app()->createUrl('aProducts/deleteFile'),
                 'upload_dir'        => $upload_dir,
                 'upload_url'        => $dir_root . $DS . 'uploads' . $DS . $this->dir_upload . $DS . 'temp' . $DS,
                 'max_file_size'     => $max_upload_size,

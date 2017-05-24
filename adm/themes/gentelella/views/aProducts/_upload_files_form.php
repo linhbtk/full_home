@@ -64,12 +64,6 @@
 
 </div><!-- form -->
 
-<!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
-<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/fileupload/vendor/jquery.ui.widget.js"></script>
-<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
-<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/fileupload/jquery.iframe-transport.js"></script>
-<!-- The basic File Upload plugin -->
-<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/fileupload/jquery.fileupload.js"></script>
 <script>
     /*jslint unparam: true */
     /*global window, $ */

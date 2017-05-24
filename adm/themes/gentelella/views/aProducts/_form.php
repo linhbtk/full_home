@@ -27,7 +27,7 @@
         }
     }
 ?>
-<div class="form" id="crop-avatar">
+<div class="form">
     <?php $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
         'id'                   => 'aproducts-form',
         // Please note: When you enable ajax validation, make sure the corresponding
@@ -231,7 +231,7 @@
                             </div>
                         <?php endif; ?>
                         <?php
-                            echo CHtml::link('<i class="fa fa-plus"></i> ' . Yii::t('adm/label', 'add_file'), 'javascript:;', array('id' => 'add_file', 'class' => 'btn btn-danger', 'data-toggle' => 'modal', 'data-target' => '.view-modal-lg'));
+                            echo CHtml::link('<i class="fa fa-plus"></i> ' . Yii::t('adm/label', 'add_file'), '#', array('id' => 'add_file', 'class' => 'btn btn-danger', 'data-toggle' => 'modal', 'data-target' => '.view-modal-lg'));
                             //list video file
                             $this->renderPartial('_list_file', array('model' => $model, 'modelFiles' => $modelFiles));
                         ?>
@@ -256,15 +256,17 @@
     </div>
     <?php $this->endWidget(); ?><!--end form-->
 
-    <!-- Cropping modal -->
+    <!-- thumbnail modal -->
     <?php $this->renderPartial('_modal_thumbnail', array('model' => $model, 'modelDetail' => $modelDetail, 'modelFiles' => $modelFiles)) ?>
-    <!-- Cropping modal -->
+    <!-- thumbnail modal -->
     <!-- add file modal -->
     <?php $this->renderPartial('_form_files', array('model' => $model, 'modelDetail' => $modelDetail, 'modelFiles' => $modelFiles)) ?>
 
 </div><!-- form -->
-<!--Js and input for Crop Image-->
-<input type="hidden" id="custom_crop_ratio" name="custom_crop_ratio" value="1">
-<script language="javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/cropper_image/dist/cropper.min.js"></script>
-<script language="javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/cropper_image/js/main.js"></script>
-<!--End Js and input for Crop Image-->
+
+<!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/fileupload/vendor/jquery.ui.widget.js"></script>
+<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/fileupload/jquery.iframe-transport.js"></script>
+<!-- The basic File Upload plugin -->
+<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/fileupload/jquery.fileupload.js"></script>
