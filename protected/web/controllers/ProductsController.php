@@ -37,7 +37,7 @@
                         'products'    => $products,
                     ));
                 } else {//products in categories_id
-                    $products = WProducts::getProductsInCategory($id, '', TRUE);
+                    $products = WProducts::getProductsInCategory($id, '', TRUE, 20);
                     $this->render('categories', array(
                         'categories'  => $categories_detail,
                         'parent_cate' => $parent_cate,

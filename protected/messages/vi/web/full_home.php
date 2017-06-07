@@ -33,5 +33,6 @@
         'send'                 => 'Gửi',
         'contact_success'      => 'Gửi thông tin liên hệ thành công.',
         'contact_fail'         => 'Gửi thông tin liên hệ thất bại. Vui lòng thử lại sau.',
+        'view_more'            => 'Xem thêm',
     );
 ?>

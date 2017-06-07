@@ -104,6 +104,7 @@
             enctype: 'multipart/form-data',
             processData: false,  // tell jQuery not to process the data
             contentType: false,   // tell jQuery not to set contentType
+            crossDomain: true,
             success: function (result) {
                 if (result.status == true) {
                     $(".alert-danger").hide();

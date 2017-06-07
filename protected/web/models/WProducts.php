@@ -32,7 +32,7 @@
          *
          * @return CActiveDataProvider|static[]
          */
-        public static function getProductsInCategory($categories_id, $product_id = '', $dataProvider = FALSE, $limit = 8, $offset = 0)
+        public static function getProductsInCategory($categories_id, $product_id = '', $dataProvider = FALSE, $limit = 12, $offset = 0)
         {
             $criteria           = new CDbCriteria();
             $criteria->distinct = TRUE;

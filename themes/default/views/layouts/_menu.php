@@ -32,7 +32,7 @@
                                         ?>
                                         <div class='col-md-3'>
                                             <div class="item">
-                                                <a href="" class="level-2">
+                                                <a href="<?= Yii::app()->controller->createUrl('products/index', array('id' => $level_2->id)); ?>" class="level-2">
                                                     <img
                                                         src="<?= $root . $level_2->icon; ?>"
                                                         alt=""

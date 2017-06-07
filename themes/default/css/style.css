@@ -802,6 +802,15 @@ ul.dropdown-inner-list.top_menu_listitem {
     padding: 0 5px;
 }
 
+.product_list .view_more {
+    color: #797979;
+    font-family: "Helvetica Neue";
+    font-size: 15px;
+    float: right;
+    margin-right: 10px;
+    padding: 0 5px;
+}
+
 .flexslider .slides img {
     height: 470px;
     width: auto;

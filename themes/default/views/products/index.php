@@ -57,7 +57,13 @@
                         endif;
                     ?>
                 </div>
-                <div class="space_30"></div>
+                <div class="space_20"></div>
+                <div class=""><a href="<?= Yii::app()->controller->createUrl('products/index', array('id' => $row['category']->id)); ?>"
+                   title="">
+                        <span class="view_more">
+                            <?= Yii::t('web/full_home', 'view_more') ?>
+                        </span>
+                </a></div>
             </div>
         <?php endforeach; ?>
     <?php endif; ?>
