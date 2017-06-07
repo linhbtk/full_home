@@ -91,7 +91,7 @@
                                     $thumb_url = '../uploads/upload-icon.jpg';
                                 }
 
-                                echo $thumb_url != '' ? CHtml::image($thumb_url, '', array('width' => '40%')) : ''; ?>
+                                echo $thumb_url != '' ? CHtml::image($thumb_url, '', array('id'=>'thumbnail_pre','data-toggle' => 'modal', 'data-target' => '.img_thumbnail', 'width' => '40%')) : ''; ?>
                             <?php echo $form->hiddenField($model, 'folder_path', array('id' => 'thumbnail_hidden')) ?>
                         </div>
                     </div>
@@ -103,16 +103,7 @@
     </div>
 
     <?php $this->endWidget(); ?>
-    <!-- Cropping modal -->
-    <?php $this->renderPartial('/layouts/_crop_image_form', array(
-        'model'      => $model,
-        'dir_upload' => Yii::app()->params->dir_partners,
-    )); ?>
 </div><!-- form -->
-<div class="clearfix">&nbsp;</div>
-<input type="hidden" id="custom_crop_ratio" name="custom_crop_ratio" value="1.5">
-<script language="javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/cropper_image/dist/cropper.min.js"></script>
-<script language="javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/cropper_image/js/main.js"></script>
 
 <div id="custom_notifications" class="custom-notifications dsp_none">
     <ul class="list-unstyled notifications clearfix" data-tabbed_notifications="notif-group">
@@ -127,3 +118,14 @@
         ?>
     </div>
 </div>
+
+<!-- thumbnail modal -->
+<?php $this->renderPartial('_modal_thumbnail', array('model' => $model)) ?>
+<!-- thumbnail modal -->
+
+<!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/fileupload/vendor/jquery.ui.widget.js"></script>
+<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/fileupload/jquery.iframe-transport.js"></script>
+<!-- The basic File Upload plugin -->
+<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/fileupload/jquery.fileupload.js"></script>

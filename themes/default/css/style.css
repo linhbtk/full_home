@@ -821,6 +821,7 @@ ul.dropdown-inner-list.top_menu_listitem {
 #detailImg .flex-control-thumbs li img {
     height: 68px;
     width: auto;
+    max-width: 100%;
     margin-left: auto;
     margin-right: auto;
 }

@@ -99,7 +99,7 @@
 
                                 };
 
-                                echo $thumb_url != '' ? CHtml::image($thumb_url, '', array('width' => '40%')) : ''; ?>
+                                echo $thumb_url != '' ? CHtml::image($thumb_url, '', array('id'=>'thumbnail_pre','data-toggle' => 'modal', 'data-target' => '.img_thumbnail', 'width' => '40%')) : ''; ?>
                             <?php echo $form->hiddenField($model, 'img_desktop', array('id' => 'thumbnail_hidden')) ?>
                         </div>
                     </div>
@@ -135,8 +135,8 @@
 
                                 };
 
-                                echo $thumb_url != '' ? CHtml::image($thumb_url, '', array('width' => '40%')) : ''; ?>
-                            <?php echo $form->hiddenField($model, 'img_mobile', array('id' => 'mobile_thumbnail_hidden')) ?>
+                                echo $thumb_url != '' ? CHtml::image($thumb_url, '', array('id'=>'thumbnail_mobile_pre','data-toggle' => 'modal', 'data-target' => '.img_thumb_mobile', 'width' => '40%')) : ''; ?>
+                            <?php echo $form->hiddenField($model, 'img_mobile', array('id' => 'thumbnail_mobile_hidden')) ?>
                         </div>
                     </div>
                     <?php $this->endWidget(); ?>
@@ -199,29 +199,8 @@
         ?>
     </div>
     <!--End CKEditor-->
-
     <?php $this->endWidget(); ?>
-
-    <!-- Cropping modal -->
-    <?php $this->renderPartial('/layouts/_crop_image_form', array(
-        'model'      => $model,
-        'dir_upload' => 'banners',
-    ));
-    ?>
-
-    <!-- Cropping modal -->
-    <?php $this->renderPartial('/layouts/_crop_image_form_mobile', array(
-        'model'      => $model,
-        'dir_upload' => 'banners',
-    ));
-    ?>
 </div><!-- form -->
-
-<input type="hidden" id="custom_crop_ratio" name="custom_crop_ratio" value="">
-<input type="hidden" id="custom_crop_ratio_mobile" name="custom_crop_ratio_mobile" value="">
-<script language="javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/cropper_image/dist/cropper.min.js"></script>
-<script language="javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/cropper_image/js/crop-banner.js"></script>
-<script language="javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/cropper_image/js/crop-banner-mobile.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
@@ -238,3 +217,15 @@
         ?>
     </div>
 </div>
+
+<!-- thumbnail modal -->
+<?php $this->renderPartial('_modal_thumbnail', array('model' => $model)) ?>
+<?php $this->renderPartial('_modal_thumbnail_mobile', array('model' => $model)) ?>
+<!-- thumbnail modal -->
+
+<!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/fileupload/vendor/jquery.ui.widget.js"></script>
+<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/fileupload/jquery.iframe-transport.js"></script>
+<!-- The basic File Upload plugin -->
+<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/fileupload/jquery.fileupload.js"></script>

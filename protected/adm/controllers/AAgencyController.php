@@ -223,4 +223,91 @@
             echo CJSON::encode($result);
             exit();
         }
+
+        /**
+         * action upload image
+         */
+        public function actionImages()
+        {
+            $dir_upload = Yii::app()->params->upload_dir_path . 'agency';
+            $time       = date("Ymdhis");
+            $DS         = DIRECTORY_SEPARATOR;
+            if (isset($_POST['tempFileName']) && $_POST['tempFileName'] != '') {
+                // file temporary
+                $fileTemporary = $_POST['tempFileName'];
+                // temporary folder
+                $temporaryFolder = $dir_upload . '/temp/';
+                if (!file_exists($temporaryFolder)) {
+                    mkdir($temporaryFolder, 0777, TRUE);
+                }
+                // get upload file info
+                $fileUploadInfo = pathinfo($fileTemporary);
+
+
+                $fileUploadNewName = $fileUploadInfo['filename'] . '-' . time();
+
+                // init folder contain file
+                $destinationFolder = $dir_upload . $DS . $time . $DS;
+
+                // check and create folder;
+                if (!file_exists($destinationFolder)) {
+                    mkdir($destinationFolder, 0777, TRUE);
+                    mkdir($destinationFolder . 'images/', 0777, TRUE);
+                }
+
+                // folder destination
+                $destinationFolder .= 'images/';
+
+                // copy temporary file to image file folder and delete in temporary folder
+                copy($temporaryFolder . $fileTemporary, $destinationFolder . $fileUploadNewName . '.' . $fileUploadInfo['extension']);
+                unlink($temporaryFolder . $fileTemporary);
+
+                //save model
+                $file_name = $destinationFolder . $fileUploadNewName . '.' . $fileUploadInfo['extension'];
+                echo CJSON::encode(array(
+                    'status'    => TRUE,
+                    'file_name' => $file_name,
+                    'msg'       => '',
+                ));
+            } else {
+                echo CJSON::encode(array(
+                    'status'    => FALSE,
+                    'file_name' => '',
+                    'msg'       => 'Vui lòng chọn file để upload',
+                ));
+            }
+
+            exit();
+        }
+
+        /**
+         * Receive book file, upload via ajax
+         *
+         * @throws CException if uploading is failure
+         */
+        public function actionUpload()
+        {
+            $dir_upload = 'agency';
+            Yii::import('ext.UploadHandler.UploadHandler');
+
+            $dir_root = dirname(Yii::app()->request->scriptFile);
+            $dir_root = str_replace('adm', '', $dir_root);
+            $DS       = DIRECTORY_SEPARATOR;
+
+            $upload_dir = $dir_root . $DS . 'uploads' . $DS . $dir_upload . $DS . 'temp' . $DS;
+            if (!is_dir($upload_dir)) {
+                mkdir($upload_dir, 0777, TRUE);
+            }
+
+            $max_upload_size   = 999 * 1024 * 1024;
+            $accept_file_types = 'jpg|jpeg|png|gif';
+            $options_arr       = array(
+                'script_url'        => Yii::app()->createUrl('aAgency/deleteFile'),
+                'upload_dir'        => $upload_dir,
+                'upload_url'        => $dir_root . $DS . 'uploads' . $DS . $dir_upload . $DS . 'temp' . $DS,
+                'max_file_size'     => $max_upload_size,
+                'accept_file_types' => '/\.(' . $accept_file_types . ')$/i',
+            );
+            $upload_handler    = new UploadHandler($options_arr);
+        }
     }
