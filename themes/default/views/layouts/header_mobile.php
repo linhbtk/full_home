@@ -32,41 +32,75 @@
                     }
                     ?>
                     <li class="">
-            <span class="level-1">
-                <?php if ($index != 1): ?>
-                    <div class="space_5"></div>
-                <?php endif; ?>
-                <span><?= CHtml::encode($level_2->name); ?></span>
-                <img src="<?= $root . $level_2->icon; ?>" alt="" class="icon">
-                <div class="space_5"></div>
-            </span>
-                        <ul>
-                            <?php
-                                $sub_menu_3 = WCategories::getCategoriesByParentId($level_2->id);
-                                if ($sub_menu_3):
-                                    foreach ($sub_menu_3 as $level_3):
-                                        $sub_menu_4 = WCategories::getCategoriesByParentId($level_3->id);
-                                        ?>
-                                        <li>
-                                            <span class="level-2"><?= CHtml::encode($level_3->name); ?></span>
-                                            <ul>
-                                                <?php
-                                                    if ($sub_menu_4):
-                                                        foreach ($sub_menu_4 as $level_4):
+                        <?php
+                            $sub_menu_3 = WCategories::getCategoriesByParentId($level_2->id);
+                            if ($sub_menu_3):?>
+                                <span class="level-1">
+                                    <?php if ($index != 1): ?>
+                                        <div class="space_5"></div>
+                                    <?php endif; ?>
+                                    <span><?= CHtml::encode($level_2->name); ?></span>
+                                    <img src="<?= $root . $level_2->icon; ?>" alt="" class="icon">
+                                    <div class="space_5"></div>
+                                </span>
+                                <ul>
+                                    <?php
+                                        foreach ($sub_menu_3 as $level_3):
+                                            $sub_menu_4 = WCategories::getCategoriesByParentId($level_3->id);
+                                            ?>
+                                            <li>
+                                                <?php if ($sub_menu_4): ?>
+                                                    <span class="level-2"><?= CHtml::encode($level_3->name); ?></span>
+                                                    <ul>
+                                                        <?php foreach ($sub_menu_4 as $level_4):
+                                                            $sub_menu_5 = WCategories::getCategoriesByParentId($level_4->id);
                                                             ?>
                                                             <li>
-                                                                <a href="<?= Yii::app()->controller->createUrl('products/index', array('id' => $level_4->id)); ?>"
-                                                                   title="" class="level-3">
-                                                                    <?= CHtml::encode($level_4->name); ?>
-                                                                </a>
+                                                                <?php if ($sub_menu_5): ?>
+                                                                    <span class="level-3"><?= CHtml::encode($level_4->name); ?></span>
+                                                                    <ul>
+                                                                        <?php foreach ($sub_menu_5 as $level_5): ?>
+                                                                            <li>
+                                                                                <a href="<?= Yii::app()->controller->createUrl('products/index', array('id' => $level_5->id)); ?>"
+                                                                                   title="" class="level-3">
+                                                                                    <?= CHtml::encode($level_5->name); ?>
+                                                                                </a>
+                                                                            </li>
+                                                                        <?php endforeach; ?>
+                                                                    </ul>
+                                                                <?php else: ?><!--nosub-->
+                                                                    <a href="<?= Yii::app()->controller->createUrl('products/index', array('id' => $level_4->id)); ?>"
+                                                                       title="">
+                                                        <span class="level-3"><?= CHtml::encode($level_4->name); ?></span>
+                                                                    </a>
+                                                                <?php endif; ?>
                                                             </li>
                                                         <?php endforeach; ?>
-                                                    <?php endif; ?>
-                                            </ul>
-                                        </li>
-                                    <?php endforeach; ?>
-                                <?php endif; ?>
-                        </ul>
+                                                    </ul>
+                                                <?php else: ?><!--nosub-->
+                                                    <a href="<?= Yii::app()->controller->createUrl('products/index', array('id' => $level_3->id)); ?>"
+                                                       title="">
+                                                        <span
+                                                            class="level-2"><?= CHtml::encode($level_3->name); ?></span>
+                                                    </a>
+                                                <?php endif; ?>
+                                            </li>
+                                        <?php endforeach; ?>
+                                </ul>
+                            <?php else: ?><!--nosub-->
+                                <span class="level-1">
+                                    <a href="<?= Yii::app()->controller->createUrl('products/index', array('id' => $level_2->id)); ?>"
+                                       title="">
+                                        <?php if ($index != 1): ?>
+                                            <div class="space_5"></div>
+                                        <?php endif; ?>
+                                        <span><?= CHtml::encode($level_2->name); ?></span>
+                                        <img src="<?= $root . $level_2->icon; ?>" alt="" class="icon">
+
+                                        <div class="space_5"></div>
+                                    </a>
+                                </span>
+                            <?php endif; ?>
                     </li>
                     <?php
                     $index++;
