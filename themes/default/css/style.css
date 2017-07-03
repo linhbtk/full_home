@@ -159,9 +159,24 @@ b, strong {
     min-height: 400px;
 }
 
+#header {
+    position: fixed;
+    width: 100%;
+    z-index: 9;
+    background: #FFF;
+}
+
 #header .logo {
     width: 210px;
     height: 55px;
+}
+
+#main_menu {
+    position: fixed;
+    width: 100%;
+    z-index: 9;
+    top: 65px;
+    background: #FFF;
 }
 
 #main_menu .top-nav {
@@ -559,14 +574,14 @@ ul.dropdown-inner-list.top_menu_listitem {
 
 .navbar-form .input-group > .form-control {
     border-radius: 0;
-    border: 3px solid #515151;
+    border: 3px solid #ccc;
     float: right;
     width: 55%;
 }
 
 .navbar-form .btn-default {
-    background-color: #515151;
-    border: 1px solid #515151;
+    background-color: #ccc;
+    border: 1px solid #ccc;
 }
 
 .navbar-form .glyphicon {
@@ -616,8 +631,8 @@ ul.dropdown-inner-list.top_menu_listitem {
 /*End Slider*/
 /*CSS social*/
 .social {
-    position: absolute;
-    top: 475px;
+    position: fixed;
+    top: 320px;
     right: 0;
     z-index: 9;
 }
@@ -667,7 +682,7 @@ ul.dropdown-inner-list.top_menu_listitem {
     background-color: #252525;
     color: #929292;
     font-weight: 600;
-    height: 150px;
+    height: 250px;
     width: 100%;
     padding: 25px 0;
 }
@@ -694,9 +709,14 @@ ul.dropdown-inner-list.top_menu_listitem {
 
 /*End CSS footer*/
 /*CSS Product*/
+#slider_1 {
+    margin-top: 90px;
+}
+
 .detail_page {
     background: url("../images/bg.png") repeat;
     min-height: 500px;
+    margin-top: 90px;
 }
 
 .detail_page .container {
