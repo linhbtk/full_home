@@ -29,7 +29,7 @@
                     ?>
                     <div class="item">
                         <div class="space_10"></div>
-                        <div class="col-md-7 col-xs-12">
+                        <div class="col-md-8 col-xs-12">
                             <div class="txt_title">
                                 <?= CHtml::encode($item->title); ?>
                             </div>
@@ -37,7 +37,7 @@
                                 <?= CHtml::encode($item->address); ?>
                             </div>
                         </div>
-                        <div class="col-md-5 col-xs-12">
+                        <div class="col-md-4 col-xs-12">
                             <div class="thumbnail">
                                 <img src="<?= Yii::app()->params->upload_dir . $item->folder_path; ?>" alt="">
                             </div>

@@ -3,9 +3,15 @@
     /* @var $partners WPartners */
 ?>
 <?php $this->renderPartial('//layouts/_social'); ?>
-<?php $this->renderPartial('//layouts/_slider', array('stacks' => WBanners::STACK_1)); ?>
-<?php $this->renderPartial('//layouts/_slider', array('stacks' => WBanners::STACK_2)); ?>
-<?php $this->renderPartial('//layouts/_slider', array('stacks' => WBanners::STACK_3)); ?>
+<div id="slider_1">
+    <?php $this->renderPartial('//layouts/_slider', array('stacks' => WBanners::STACK_1)); ?>
+</div>
+<div id="slider_2">
+    <?php $this->renderPartial('//layouts/_slider', array('stacks' => WBanners::STACK_2)); ?>
+</div>
+<div id="slider_3">
+    <?php $this->renderPartial('//layouts/_slider', array('stacks' => WBanners::STACK_3)); ?>
+</div>
 <div class="space_60"></div>
 <div class="container">
     <div class="row text-center">
